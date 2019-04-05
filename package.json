@@ -1,0 +1,71 @@
+{
+  "name": "noname",
+  "version": "0.0.0",
+  "description": "",
+  "main": "index.js",
+  "author": "kevinpollet <pollet.kevin@gmail.com>",
+  "license": "MIT",
+  "files": [
+    "lib"
+  ],
+  "scripts": {
+    "build:src": "tsc -p tsconfig.json",
+    "build:test": "tsc -p tsconfig-test.json",
+    "clean": "rimraf lib *.tgz",
+    "format": "prettier --write '{src,test}/**/*.{ts,json}' '*.{json,md}'",
+    "lint:src": "eslint 'src/**/*.ts'",
+    "lint:test": "eslint 'test/**/*.ts'",
+    "prebuild:src": "run-s clean lint:src",
+    "prebuild:test": "run-s clean lint:test",
+    "prepack": "run-s build:src",
+    "pretest": "run-s build:test",
+    "test": "jest lib/test"
+  },
+  "dependencies": {
+    "@types/node": "10.14.4"
+  },
+  "devDependencies": {
+    "@types/jest": "24.0.11",
+    "@typescript-eslint/eslint-plugin": "1.6.0",
+    "@typescript-eslint/parser": "1.6.0",
+    "eslint": "5.16.0",
+    "eslint-config-prettier": "4.1.0",
+    "husky": "1.3.1",
+    "jest": "24.7.1",
+    "lint-staged": "8.1.5",
+    "npm-run-all": "4.1.5",
+    "prettier": "1.16.4",
+    "rimraf": "2.6.3",
+    "typescript": "3.4.1"
+  },
+  "eslintConfig": {
+    "parser": "@typescript-eslint/parser",
+    "parserOptions": {
+      "project": "./tsconfig.json"
+    },
+    "extends": [
+      "plugin:@typescript-eslint/recommended",
+      "prettier",
+      "prettier/@typescript-eslint"
+    ],
+    "rules": {
+      "@typescript-eslint/explicit-function-return-type": {
+        "allowExpressions": true
+      }
+    }
+  },
+  "husky": {
+    "hooks": {
+      "pre-commit": "lint-staged"
+    }
+  },
+  "lint-staged": {
+    "*.{ts,json,md}": [
+      "prettier --write",
+      "git add"
+    ]
+  },
+  "prettier": {
+    "trailingComma": "es5"
+  }
+}

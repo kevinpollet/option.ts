@@ -1,4 +1,6 @@
-# NoName
+# Monatic
+
+Pragmatic monads for TypeScript.
 
 ## Scripts
 

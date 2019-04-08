@@ -1,7 +1,7 @@
 {
-  "name": "noname",
+  "name": "monatic",
   "version": "0.0.0",
-  "description": "",
+  "description": "Pragmatic monads for TypeScript",
   "author": "kevinpollet <pollet.kevin@gmail.com>",
   "license": "MIT",
   "main": "lib/index.js",

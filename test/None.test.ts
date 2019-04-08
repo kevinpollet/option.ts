@@ -11,6 +11,10 @@ import { NoSuchElementError } from "../src/option/NoSuchElementError";
 describe("None", () => {
   const none = new None();
 
+  describe("exists", () => {
+    it("should return false", () => expect(none.exists()).toBeFalsy());
+  });
+
   describe("isEmpty", () => {
     it("should return true", () => expect(none.isEmpty()).toBeTruthy());
   });

@@ -14,6 +14,10 @@ export class Some<T> implements Option<T> {
     this.value = value;
   }
 
+  exists(p: (value: Readonly<T>) => boolean): boolean {
+    return p(this.value);
+  }
+
   isEmpty(): boolean {
     return false;
   }

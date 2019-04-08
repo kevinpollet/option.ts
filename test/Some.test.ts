@@ -11,6 +11,14 @@ describe("Some", () => {
   const value = 12;
   const some = new Some(value);
 
+  describe("exists", () => {
+    it("should return true if the wrapped value match the given predicate", () =>
+      expect(some.exists(v => v === value)).toBeTruthy());
+
+    it("should return false if the wrapped value does not match the given predicate", () =>
+      expect(some.exists(v => v % 2 === 1)).toBeFalsy());
+  });
+
   describe("isEmpty", () => {
     it("should return false", () => expect(some.isEmpty()).toBeFalsy());
   });

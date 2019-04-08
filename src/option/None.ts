@@ -9,6 +9,10 @@ import { Option } from "./Option";
 import { NoSuchElementError } from "./NoSuchElementError";
 
 export class None implements Option<never> {
+  exists(): boolean {
+    return false;
+  }
+
   isEmpty(): boolean {
     return true;
   }

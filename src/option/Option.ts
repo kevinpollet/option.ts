@@ -6,6 +6,7 @@
  */
 
 export interface Option<T> {
+  exists(p: (value: Readonly<T>) => boolean): boolean;
   isDefined(): boolean;
   isEmpty(): boolean;
   get(): T;

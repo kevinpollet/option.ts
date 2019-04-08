@@ -16,6 +16,6 @@ Pragmatic monads for TypeScript.
 
 See [LICENSE.md](./LICENSE.md)
 
-[1][https://prettier.io/]
-[2][https://jestjs.io/]
-[3][https://eslint.org]
+[1]: https://prettier.io
+[2]: https://jestjs.io
+[3]: https://eslint.org

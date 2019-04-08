@@ -1,4 +1,4 @@
-# Monatic
+# Monatic &middot; [![Build Status](https://travis-ci.com/kevinpollet/monatic.svg?token=tSMJcyr4W5f93JMvoe6S&branch=master)](https://travis-ci.com/kevinpollet/monatic)
 
 Pragmatic monads for TypeScript.
 

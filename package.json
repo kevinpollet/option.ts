@@ -2,16 +2,17 @@
   "name": "noname",
   "version": "0.0.0",
   "description": "",
-  "main": "index.js",
   "author": "kevinpollet <pollet.kevin@gmail.com>",
   "license": "MIT",
+  "main": "lib/index.js",
+  "types": "lib/index.d.ts",
   "files": [
     "lib"
   ],
   "scripts": {
     "build:src": "tsc -p tsconfig.json",
     "build:test": "tsc -p tsconfig-test.json",
-    "clean": "rimraf lib *.tgz",
+    "clean": "rimraf coverage lib *.tgz",
     "format": "prettier --write '{src,test}/**/*.{ts,json}' '*.{json,md}'",
     "lint:src": "eslint 'src/**/*.ts'",
     "lint:test": "eslint 'test/**/*.ts'",
@@ -19,7 +20,7 @@
     "prebuild:test": "run-s clean lint:test",
     "prepack": "run-s build:src",
     "pretest": "run-s build:test",
-    "test": "jest lib/test"
+    "test": "jest --coverage --collectCoverageFrom='lib/src/**/*.js' lib/test"
   },
   "dependencies": {
     "@types/node": "10.14.4"
@@ -49,6 +50,7 @@
       "prettier/@typescript-eslint"
     ],
     "rules": {
+      "@typescript-eslint/explicit-member-accessibility": "none",
       "@typescript-eslint/explicit-function-return-type": {
         "allowExpressions": true
       }

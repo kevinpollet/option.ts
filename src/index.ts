@@ -5,4 +5,7 @@
  * found in the LICENSE.md file.
  */
 
-export const add = (a: number) => (b: number) => a + b;
+import { Optional } from "./option/Optional";
+import { Option } from "./option/Option";
+
+export { Optional, Option };

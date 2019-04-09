@@ -8,7 +8,9 @@
 import { Option } from "./Option";
 import { NoSuchElementError } from "./NoSuchElementError";
 
-export class None implements Option<never> {
+// TODO check typescript type system
+// eslint-disable-next-line @typescript-eslint/no-explicit-any
+export class None implements Option<any> {
   static readonly INSTANCE = new None();
 
   private constructor() {}
@@ -17,10 +19,17 @@ export class None implements Option<never> {
     return false;
   }
 
-  filter(): Option<never> {
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
+  filter(): Option<any> {
     return this;
   }
 
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
+  getOrElse(f: () => any): any {
+    return f();
+  }
+
+  // eslint-disable-line @typescript-eslint/no-explicit-any
   get(): never {
     throw new NoSuchElementError();
   }
@@ -34,6 +43,7 @@ export class None implements Option<never> {
   }
 
   map<B>(): Option<B> {
-    return this;
+    const cast = this as unknown;
+    return cast as Option<B>;
   }
 }

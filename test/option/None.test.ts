@@ -35,6 +35,16 @@ describe("None", () => {
       expect(() => option.get()).toThrowError(NoSuchElementError));
   });
 
+  describe("getOrElse", () => {
+    it("should return the default value", () => {
+      const defaultValue = 24;
+      const defaultFn = jest.fn(() => defaultValue);
+
+      expect(option.getOrElse(defaultFn)).toBe(defaultValue);
+      expect(defaultFn).toBeCalledTimes(1);
+    });
+  });
+
   describe("isEmpty", () => {
     it("should return true", () => expect(option.isEmpty()).toBeTruthy());
   });

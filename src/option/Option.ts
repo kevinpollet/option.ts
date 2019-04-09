@@ -9,6 +9,7 @@ export interface Option<A> {
   exists(p: (value: Readonly<A>) => boolean): boolean;
   filter(p: (value: Readonly<A>) => boolean): Option<A>;
   get(): A;
+  getOrElse(f: () => A): A;
   isDefined(): boolean;
   isEmpty(): boolean;
   map<B>(m: (value: Readonly<A>) => NonNullable<B>): Option<B>;

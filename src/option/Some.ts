@@ -27,6 +27,10 @@ export class Some<A> implements Option<A> {
     return this.value;
   }
 
+  getOrElse(): A {
+    return this.get();
+  }
+
   isEmpty(): boolean {
     return false;
   }

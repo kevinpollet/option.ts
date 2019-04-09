@@ -12,11 +12,11 @@ import { Some } from "./Some";
 export abstract class Optional {
   static readonly NONE = None.INSTANCE;
 
-  static from<T>(value: NonNullable<T> | undefined | null): Option<T> {
+  static from<A>(value: NonNullable<A> | undefined | null): Option<A> {
     return value ? Optional.some(value) : Optional.NONE;
   }
 
-  static some<T>(value: NonNullable<T>): Option<T> {
+  static some<A>(value: NonNullable<A>): Option<A> {
     return new Some(value);
   }
 }

@@ -5,7 +5,7 @@
  * found in the LICENSE.md file.
  */
 
-import { Optional } from "./option/Optional";
 import { Option } from "./option/Option";
+import { Optional } from "./option/Optional";
 
-export { Optional, Option };
+export { Option, Optional };

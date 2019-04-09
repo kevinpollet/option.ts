@@ -54,6 +54,15 @@ describe("Some", () => {
       expect(option.get()).toBe(value));
   });
 
+  describe("getOrElse", () => {
+    it("should return the wrapped value", () => {
+      const defaultFn = jest.fn(() => 24);
+
+      expect(option.getOrElse(defaultFn)).toBe(value);
+      expect(defaultFn).not.toBeCalled();
+    });
+  });
+
   describe("isEmpty", () => {
     it("should return false", () => expect(option.isEmpty()).toBeFalsy());
   });

@@ -51,4 +51,8 @@ export class None implements Option<any> {
     const cast = this as unknown;
     return cast as Option<B>;
   }
+
+  orUndefined(): undefined {
+    return undefined;
+  }
 }

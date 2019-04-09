@@ -21,4 +21,6 @@ export interface Option<A> {
   isEmpty(): boolean;
 
   map<B>(m: (value: Readonly<A>) => NonNullable<B>): Option<B>;
+
+  orUndefined(): A | undefined;
 }

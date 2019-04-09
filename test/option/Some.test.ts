@@ -100,4 +100,12 @@ describe("Some", () => {
       expect(mapFn).toBeCalledWith(value);
     });
   });
+
+  describe("orUndefined", () => {
+    it("should always return undefined", () => {
+      const result = option.orUndefined();
+
+      expect(result).toBe(value);
+    });
+  });
 });

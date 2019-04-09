@@ -71,4 +71,12 @@ describe("None", () => {
       expect(mapFn).not.toBeCalled();
     });
   });
+
+  describe("orUndefined", () => {
+    it("should always return undefined", () => {
+      const result = option.orUndefined();
+
+      expect(result).not.toBeDefined();
+    });
+  });
 });

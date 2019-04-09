@@ -45,7 +45,10 @@ export class Some<A> implements Option<A> {
 
   map<B>(m: (value: Readonly<A>) => NonNullable<B>): Option<B> {
     const mappedValue = m(this.value);
-
     return new Some(mappedValue);
+  }
+
+  orUndefined(): A {
+    return this.get();
   }
 }

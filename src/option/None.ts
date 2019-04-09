@@ -9,8 +9,20 @@ import { Option } from "./Option";
 import { NoSuchElementError } from "./NoSuchElementError";
 
 export class None implements Option<never> {
+  static readonly INSTANCE = new None();
+
+  private constructor() {}
+
   exists(): boolean {
     return false;
+  }
+
+  filter(): Option<never> {
+    return this;
+  }
+
+  get(): never {
+    throw new NoSuchElementError();
   }
 
   isEmpty(): boolean {
@@ -21,7 +33,7 @@ export class None implements Option<never> {
     return false;
   }
 
-  get(): never {
-    throw new NoSuchElementError();
+  map<B>(): Option<B> {
+    return this;
   }
 }

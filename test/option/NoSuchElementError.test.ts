@@ -5,7 +5,7 @@
  * found in the LICENSE.md file.
  */
 
-import { NoSuchElementError } from "../src/option/NoSuchElementError";
+import { NoSuchElementError } from "../../src/option/NoSuchElementError";
 
 describe("NoSuchElementError", () => {
   describe("constructor", () => {

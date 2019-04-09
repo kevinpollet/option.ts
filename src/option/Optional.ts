@@ -10,7 +10,7 @@ import { Option } from "./Option";
 import { Some } from "./Some";
 
 export abstract class Optional {
-  static readonly NONE = new None();
+  static readonly NONE = None.INSTANCE;
 
   static from<T>(value: NonNullable<T> | undefined | null): Option<T> {
     return value ? Optional.some(value) : Optional.NONE;

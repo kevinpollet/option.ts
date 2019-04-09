@@ -5,9 +5,11 @@
  * found in the LICENSE.md file.
  */
 
-export interface Option<T> {
-  exists(p: (value: Readonly<T>) => boolean): boolean;
+export interface Option<A> {
+  exists(p: (value: Readonly<A>) => boolean): boolean;
+  filter(p: (value: Readonly<A>) => boolean): Option<A>;
+  get(): A;
   isDefined(): boolean;
   isEmpty(): boolean;
-  get(): T;
+  map<B>(m: (value: Readonly<A>) => NonNullable<B>): Option<B>;
 }

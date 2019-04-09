@@ -6,16 +6,25 @@
  */
 
 import { Option } from "./Option";
+import { None } from "./None";
 
-export class Some<T> implements Option<T> {
-  private readonly value: NonNullable<T>;
+export class Some<A> implements Option<A> {
+  private readonly value: NonNullable<A>;
 
-  constructor(value: NonNullable<T>) {
+  constructor(value: NonNullable<A>) {
     this.value = value;
   }
 
-  exists(p: (value: Readonly<T>) => boolean): boolean {
+  exists(p: (value: Readonly<A>) => boolean): boolean {
     return p(this.value);
+  }
+
+  filter(p: (value: Readonly<A>) => boolean): Option<A> {
+    return p(this.value) ? this : None.INSTANCE;
+  }
+
+  get(): A {
+    return this.value;
   }
 
   isEmpty(): boolean {
@@ -26,7 +35,9 @@ export class Some<T> implements Option<T> {
     return true;
   }
 
-  get(): T {
-    return this.value;
+  map<B>(m: (value: Readonly<A>) => NonNullable<B>): Option<B> {
+    const mappedValue = m(this.value);
+
+    return new Some(mappedValue);
   }
 }

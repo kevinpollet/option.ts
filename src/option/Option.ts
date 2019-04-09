@@ -5,12 +5,14 @@
  * found in the LICENSE.md file.
  */
 
+import { MapFn, PredicateFn } from "./FnTypes";
+
 export interface Option<A> {
-  exists(p: (value: Readonly<A>) => boolean): boolean;
+  exists(p: PredicateFn<A>): boolean;
 
-  filter(p: (value: Readonly<A>) => boolean): Option<A>;
+  filter(p: PredicateFn<A>): Option<A>;
 
-  filterNot(p: (value: Readonly<A>) => boolean): Option<A>;
+  filterNot(p: PredicateFn<A>): Option<A>;
 
   get(): A;
 
@@ -20,7 +22,7 @@ export interface Option<A> {
 
   isEmpty(): boolean;
 
-  map<B>(m: (value: Readonly<A>) => NonNullable<B>): Option<B>;
+  map<B>(m: MapFn<A, B>): Option<B>;
 
   orUndefined(): A | undefined;
 }

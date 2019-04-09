@@ -5,8 +5,9 @@
  * found in the LICENSE.md file.
  */
 
-import { Option } from "./Option";
 import { None } from "./None";
+import { Option } from "./Option";
+import { MapFn, PredicateFn } from "./FnTypes";
 
 export class Some<A> implements Option<A> {
   private readonly value: NonNullable<A>;
@@ -15,15 +16,15 @@ export class Some<A> implements Option<A> {
     this.value = value;
   }
 
-  exists(p: (value: Readonly<A>) => boolean): boolean {
+  exists(p: PredicateFn<A>): boolean {
     return p(this.value);
   }
 
-  filter(p: (value: Readonly<A>) => boolean): Option<A> {
+  filter(p: PredicateFn<A>): Option<A> {
     return this.exists(p) ? this : None.INSTANCE;
   }
 
-  filterNot(p: (value: Readonly<A>) => boolean): Option<A> {
+  filterNot(p: PredicateFn<A>): Option<A> {
     return this.exists(p) ? None.INSTANCE : this;
   }
 
@@ -43,7 +44,7 @@ export class Some<A> implements Option<A> {
     return true;
   }
 
-  map<B>(m: (value: Readonly<A>) => NonNullable<B>): Option<B> {
+  map<B>(m: MapFn<A, B>): Option<B> {
     const mappedValue = m(this.value);
     return new Some(mappedValue);
   }

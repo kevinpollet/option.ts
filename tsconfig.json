@@ -1,16 +1,7 @@
 {
+  "extends": "@kevinpollet/tsconfig",
   "compilerOptions": {
-    "pretty": true,
-    "strict": true,
-    "declaration": true,
-    "esModuleInterop": true,
-    "forceConsistentCasingInFileNames": true,
     "lib": ["es2018"],
-    "module": "commonjs",
-    "moduleResolution": "node",
-    "target": "es2017",
-    "noUnusedLocals": true,
-    "noUnusedParameters": true,
     "outDir": "lib"
   },
   "include": ["src"]

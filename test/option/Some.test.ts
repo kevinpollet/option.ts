@@ -49,6 +49,24 @@ describe("Some", () => {
     });
   });
 
+  describe("filterNot", () => {
+    it("should return Some if predicate function return false", () => {
+      const filterNotFn = jest.fn(() => false);
+
+      expect(option.filterNot(filterNotFn)).toBe(option);
+      expect(filterNotFn).toBeCalledTimes(1);
+      expect(filterNotFn).toBeCalledWith(value);
+    });
+
+    it("should return None if predicate function return true", () => {
+      const filterNotFn = jest.fn(() => true);
+
+      expect(option.filterNot(filterNotFn)).toBe(None.INSTANCE);
+      expect(filterNotFn).toBeCalledTimes(1);
+      expect(filterNotFn).toBeCalledWith(value);
+    });
+  });
+
   describe("get", () => {
     it("should return the wrapped value", () =>
       expect(option.get()).toBe(value));

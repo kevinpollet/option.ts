@@ -10,6 +10,8 @@ export interface Option<A> {
 
   filter(p: (value: Readonly<A>) => boolean): Option<A>;
 
+  filterNot(p: (value: Readonly<A>) => boolean): Option<A>;
+
   get(): A;
 
   getOrElse(f: () => A): A;

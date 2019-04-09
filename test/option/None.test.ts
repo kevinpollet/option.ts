@@ -30,6 +30,15 @@ describe("None", () => {
     });
   });
 
+  describe("filterNot", () => {
+    it("should always return None", () => {
+      const filterNotFn = jest.fn(() => true);
+
+      expect(option.filterNot(filterNotFn)).toBe(None.INSTANCE);
+      expect(filterNotFn).not.toBeCalled();
+    });
+  });
+
   describe("get", () => {
     it("should throw NoSuchElementError", () =>
       expect(() => option.get()).toThrowError(NoSuchElementError));

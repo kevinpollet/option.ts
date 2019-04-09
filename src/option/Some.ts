@@ -20,7 +20,11 @@ export class Some<A> implements Option<A> {
   }
 
   filter(p: (value: Readonly<A>) => boolean): Option<A> {
-    return p(this.value) ? this : None.INSTANCE;
+    return this.exists(p) ? this : None.INSTANCE;
+  }
+
+  filterNot(p: (value: Readonly<A>) => boolean): Option<A> {
+    return this.exists(p) ? None.INSTANCE : this;
   }
 
   get(): A {

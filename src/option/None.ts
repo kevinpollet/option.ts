@@ -25,6 +25,11 @@ export class None implements Option<any> {
   }
 
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
+  filterNot(): Option<any> {
+    return this;
+  }
+
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
   getOrElse(f: () => any): any {
     return f();
   }

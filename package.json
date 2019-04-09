@@ -6,6 +6,20 @@
   "license": "MIT",
   "main": "lib/index.js",
   "types": "lib/index.d.ts",
+  "homepage": "https://github.com/kevinpollet/monatic#readme",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/kevinpollet/monatic.git"
+  },
+  "bugs": {
+    "url": "https://github.com/kevinpollet/monatic/issues"
+  },
+  "keywords": [
+    "typescript",
+    "monads",
+    "option",
+    "result"
+  ],
   "files": [
     "lib"
   ],

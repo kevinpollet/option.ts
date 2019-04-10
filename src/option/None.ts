@@ -31,6 +31,11 @@ export class None implements Option<any> {
   }
 
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
+  flatMap<B>(): Option<B> {
+    return this;
+  }
+
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
   getOrElse(defaultValue: any): any {
     return defaultValue;
   }

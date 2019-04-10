@@ -28,6 +28,10 @@ export class Some<A> implements Option<A> {
     return this.exists(p) ? None.INSTANCE : this;
   }
 
+  flatMap<B>(m: MapFn<A, Option<B>>): Option<B> {
+    return m(this.value);
+  }
+
   get(): A {
     return this.value;
   }

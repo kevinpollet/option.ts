@@ -39,6 +39,15 @@ describe("None", () => {
     });
   });
 
+  describe("flatMap", () => {
+    it("should always return None", () => {
+      const flatMapFn = jest.fn(() => None.INSTANCE);
+
+      expect(option.flatMap(flatMapFn)).toBe(None.INSTANCE);
+      expect(flatMapFn).not.toBeCalled();
+    });
+  });
+
   describe("get", () => {
     it("should throw NoSuchElementError", () =>
       expect(() => option.get()).toThrowError(NoSuchElementError));

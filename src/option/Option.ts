@@ -38,6 +38,14 @@ export interface Option<A> {
   filterNot(p: PredicateFn<A>): Option<A>;
 
   /**
+   * Returns the result of applying the mapping function to this Option value if is nonempty.
+   * Returns None if this Option is empty or the mapping function returns None.
+   *
+   * @param m - The mapping function.
+   */
+  flatMap<B>(m: MapFn<A, Option<B>>): Option<B>;
+
+  /**
    * Returns the option's value.
    */
   get(): A;

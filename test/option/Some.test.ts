@@ -67,6 +67,17 @@ describe("Some", () => {
     });
   });
 
+  describe("flatMap", () => {
+    it("should return the flatMap function result", () => {
+      const flatMapFn = jest.fn(() => new Some(value.toString()));
+      const newOption = option.flatMap(flatMapFn);
+
+      expect(newOption).toBeInstanceOf(Some);
+      expect(newOption.get()).toBe(value.toString());
+      expect(flatMapFn).toBeCalledTimes(1);
+    });
+  });
+
   describe("get", () => {
     it("should return the wrapped value", () =>
       expect(option.get()).toBe(value));

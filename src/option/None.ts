@@ -16,6 +16,19 @@ export class None implements Option<any> {
 
   private constructor() {}
 
+  get isEmpty(): boolean {
+    return true;
+  }
+
+  get isDefined(): boolean {
+    return false;
+  }
+
+  // eslint-disable-line @typescript-eslint/no-explicit-any
+  get get(): never {
+    throw new NoSuchElementError();
+  }
+
   exists(): boolean {
     return false;
   }
@@ -38,19 +51,6 @@ export class None implements Option<any> {
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
   getOrElse(defaultValue: any): any {
     return defaultValue;
-  }
-
-  // eslint-disable-line @typescript-eslint/no-explicit-any
-  get(): never {
-    throw new NoSuchElementError();
-  }
-
-  isEmpty(): boolean {
-    return true;
-  }
-
-  isDefined(): boolean {
-    return false;
   }
 
   map<B>(): Option<B> {

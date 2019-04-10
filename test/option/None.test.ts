@@ -50,7 +50,7 @@ describe("None", () => {
 
   describe("get", () => {
     it("should throw NoSuchElementError", () =>
-      expect(() => option.get()).toThrowError(NoSuchElementError));
+      expect(() => option.get).toThrowError(NoSuchElementError));
   });
 
   describe("getOrElse", () => {
@@ -62,11 +62,11 @@ describe("None", () => {
   });
 
   describe("isEmpty", () => {
-    it("should return true", () => expect(option.isEmpty()).toBeTruthy());
+    it("should return true", () => expect(option.isEmpty).toBeTruthy());
   });
 
   describe("isDefined", () => {
-    it("should return false", () => expect(option.isDefined()).toBeFalsy());
+    it("should return false", () => expect(option.isDefined).toBeFalsy());
   });
 
   describe("map", () => {

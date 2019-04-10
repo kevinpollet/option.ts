@@ -73,14 +73,13 @@ describe("Some", () => {
       const newOption = option.flatMap(flatMapFn);
 
       expect(newOption).toBeInstanceOf(Some);
-      expect(newOption.get()).toBe(value.toString());
+      expect(newOption.get).toBe(value.toString());
       expect(flatMapFn).toBeCalledTimes(1);
     });
   });
 
   describe("get", () => {
-    it("should return the wrapped value", () =>
-      expect(option.get()).toBe(value));
+    it("should return the wrapped value", () => expect(option.get).toBe(value));
   });
 
   describe("getOrElse", () => {
@@ -89,11 +88,11 @@ describe("Some", () => {
   });
 
   describe("isEmpty", () => {
-    it("should return false", () => expect(option.isEmpty()).toBeFalsy());
+    it("should return false", () => expect(option.isEmpty).toBeFalsy());
   });
 
   describe("isDefined", () => {
-    it("should return tue", () => expect(option.isDefined()).toBeTruthy());
+    it("should return tue", () => expect(option.isDefined).toBeTruthy());
   });
 
   describe("map", () => {
@@ -102,7 +101,7 @@ describe("Some", () => {
       const newOption = option.map(mapFn);
 
       expect(newOption).toBeInstanceOf(Some);
-      expect(newOption.get()).toBe(value.toString());
+      expect(newOption.get).toBe(value.toString());
       expect(mapFn).toBeCalledTimes(1);
       expect(mapFn).toBeCalledWith(value);
     });

@@ -16,18 +16,6 @@ export class Some<A> implements Option<A> {
     this.value = value;
   }
 
-  get isEmpty(): boolean {
-    return false;
-  }
-
-  get isDefined(): boolean {
-    return true;
-  }
-
-  get get(): A {
-    return this.value;
-  }
-
   exists(p: PredicateFn<A>): boolean {
     return p(this.value);
   }
@@ -44,8 +32,20 @@ export class Some<A> implements Option<A> {
     return m(this.value);
   }
 
+  get(): A {
+    return this.value;
+  }
+
   getOrElse(): A {
     return this.value;
+  }
+
+  isEmpty(): boolean {
+    return false;
+  }
+
+  isDefined(): boolean {
+    return true;
   }
 
   map<B>(m: MapFn<A, B>): Option<B> {

@@ -14,21 +14,6 @@ import { MapFn, PredicateFn, Matcher } from "./FnTypes";
  */
 export interface Option<A> {
   /**
-   * Returns true if the option is an instance of Some, false otherwise.
-   */
-  isDefined: boolean;
-
-  /**
-   * Returns true if the option is None, false otherwise.
-   */
-  isEmpty: boolean;
-
-  /**
-   * Returns the option's value.
-   */
-  get: A;
-
-  /**
    * Returns true if this option is nonempty and the predicate p is verified.
    * Otherwise, returns false.
    *
@@ -61,12 +46,27 @@ export interface Option<A> {
   flatMap<B>(m: MapFn<A, Option<B>>): Option<B>;
 
   /**
+   * Returns the option's value.
+   */
+  get(): A;
+
+  /**
    * Returns the option's value if the option is nonempty,
    * the default value otherwise.
    *
    * @param defaultValue - The default value.
    */
   getOrElse(defaultValue: A): A;
+
+  /**
+   * Returns true if the option is an instance of Some, false otherwise.
+   */
+  isDefined(): boolean;
+
+  /**
+   * Returns true if the option is None, false otherwise.
+   */
+  isEmpty(): boolean;
 
   /**
    * Returns an Option containing the result of applying the mapping function

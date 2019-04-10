@@ -97,6 +97,18 @@ describe("Some", () => {
     });
   });
 
+  describe("match", () => {
+    it("should always return the result of matcher function some", () => {
+      const noneFn = jest.fn(() => "none");
+      const someFn = jest.fn((value: number) => value.toString());
+      const result = option.match({ none: noneFn, some: someFn });
+
+      expect(result).toBe(value.toString());
+      expect(noneFn).toBeCalledTimes(0);
+      expect(someFn).toBeCalledTimes(1);
+    });
+  });
+
   describe("orUndefined", () => {
     it("should always return undefined", () => {
       const result = option.orUndefined();

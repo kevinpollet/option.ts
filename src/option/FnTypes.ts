@@ -9,4 +9,9 @@ type MapFn<A, B> = (value: Readonly<A>) => NonNullable<B>;
 
 type PredicateFn<A> = (value: Readonly<A>) => boolean;
 
-export { MapFn, PredicateFn };
+interface Matcher<A, B> {
+  none: () => B;
+  some: (value: A) => B;
+}
+
+export { MapFn, Matcher, PredicateFn };

@@ -5,8 +5,13 @@
  * found in the LICENSE.md file.
  */
 
-import { MapFn, PredicateFn } from "./FnTypes";
+import { MapFn, PredicateFn, Matcher } from "./FnTypes";
 
+/**
+ * Option monad interface.
+ *
+ * @public
+ */
 export interface Option<A> {
   /**
    * Returns true if this option is nonempty and the predicate p is verified.
@@ -62,6 +67,14 @@ export interface Option<A> {
    * @param m - The mapping function.
    */
   map<B>(m: MapFn<A, B>): Option<B>;
+
+  /**
+   * Returns the result of applying the matcher function some if Option is nonempty.
+   * Otherwise the matcher function none result.
+   *
+   * @param matcher - The matcher object.
+   */
+  match<B>(matcher: Matcher<A, B>): B;
 
   /**
    * Returns the option's value if it is nonempty, or undefined if it is empty.

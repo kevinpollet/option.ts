@@ -70,6 +70,18 @@ describe("None", () => {
     });
   });
 
+  describe("match", () => {
+    it("should always return the result of matcher function none", () => {
+      const noneFn = jest.fn(() => "none");
+      const someFn = jest.fn((value: number) => value.toString());
+      const result = option.match({ none: noneFn, some: someFn });
+
+      expect(result).toBe("none");
+      expect(noneFn).toBeCalledTimes(1);
+      expect(someFn).toBeCalledTimes(0);
+    });
+  });
+
   describe("orUndefined", () => {
     it("should always return undefined", () => {
       const result = option.orUndefined();

@@ -7,7 +7,7 @@
 
 import { None } from "./None";
 import { Option } from "./Option";
-import { MapFn, PredicateFn } from "./FnTypes";
+import { MapFn, Matcher, PredicateFn } from "./FnTypes";
 
 export class Some<A> implements Option<A> {
   private readonly value: NonNullable<A>;
@@ -47,6 +47,10 @@ export class Some<A> implements Option<A> {
   map<B>(m: MapFn<A, B>): Option<B> {
     const mappedValue = m(this.value);
     return new Some(mappedValue);
+  }
+
+  match<B>(matcher: Matcher<A, B>): B {
+    return matcher.some(this.value);
   }
 
   orUndefined(): A {

@@ -7,6 +7,7 @@
 
 import { Option } from "./Option";
 import { NoSuchElementError } from "./NoSuchElementError";
+import { Matcher } from "./FnTypes";
 
 // TODO check typescript type system
 // eslint-disable-next-line @typescript-eslint/no-explicit-any
@@ -50,6 +51,11 @@ export class None implements Option<any> {
   map<B>(): Option<B> {
     const cast = this as unknown;
     return cast as Option<B>;
+  }
+
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
+  match<B>(matcher: Matcher<any, B>): B {
+    return matcher.none();
   }
 
   orUndefined(): undefined {

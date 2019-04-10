@@ -5,7 +5,8 @@
  * found in the LICENSE.md file.
  */
 
-import { MapFn, PredicateFn, Matcher } from "./FnTypes";
+import { PredicateFn, MapFn } from "./Fns";
+import { Matcher } from "./Matcher";
 
 /**
  * Option monad interface.
@@ -74,7 +75,7 @@ export interface Option<A> {
    *
    * @param m - The mapping function.
    */
-  map<B>(m: MapFn<A, B>): Option<B>;
+  map<B>(m: MapFn<A, NonNullable<B>>): Option<B>;
 
   /**
    * Returns the result of applying the matcher function some if Option is nonempty.

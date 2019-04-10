@@ -7,7 +7,7 @@
 
 import { Option } from "./Option";
 import { NoSuchElementError } from "./NoSuchElementError";
-import { Matcher } from "./FnTypes";
+import { Matcher } from "./Matcher";
 
 // TODO check typescript type system
 // eslint-disable-next-line @typescript-eslint/no-explicit-any

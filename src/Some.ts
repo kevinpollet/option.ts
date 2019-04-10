@@ -7,12 +7,13 @@
 
 import { None } from "./None";
 import { Option } from "./Option";
-import { MapFn, Matcher, PredicateFn } from "./FnTypes";
+import { MapFn, PredicateFn } from "./Fns";
+import { Matcher } from "./Matcher";
 
 export class Some<A> implements Option<A> {
-  private readonly value: NonNullable<A>;
+  private readonly value: A;
 
-  constructor(value: NonNullable<A>) {
+  constructor(value: A) {
     this.value = value;
   }
 
@@ -48,7 +49,7 @@ export class Some<A> implements Option<A> {
     return true;
   }
 
-  map<B>(m: MapFn<A, B>): Option<B> {
+  map<B>(m: MapFn<A, NonNullable<B>>): Option<B> {
     const mappedValue = m(this.value);
     return new Some(mappedValue);
   }

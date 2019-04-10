@@ -14,7 +14,7 @@ import { Matcher } from "./Matcher";
 export class None implements Option<any> {
   static readonly INSTANCE = new None();
 
-  private constructor() {}
+  private constructor() {} // eslint-disable-line
 
   exists(): boolean {
     return false;

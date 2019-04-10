@@ -98,7 +98,7 @@ describe("Some", () => {
 
   describe("map", () => {
     it("should return a new Option with the mapped value", () => {
-      const mapFn = jest.fn((value: number) => value.toString());
+      const mapFn = jest.fn((v: number) => v.toString());
       const newOption = option.map(mapFn);
 
       expect(newOption).toBeInstanceOf(Some);
@@ -111,7 +111,7 @@ describe("Some", () => {
   describe("match", () => {
     it("should always return the result of matcher function some", () => {
       const noneFn = jest.fn(() => "none");
-      const someFn = jest.fn((value: number) => value.toString());
+      const someFn = jest.fn((v: number) => v.toString());
       const result = option.match({ none: noneFn, some: someFn });
 
       expect(result).toBe(value.toString());

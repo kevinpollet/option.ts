@@ -27,13 +27,14 @@
     "build:src": "tsc -p tsconfig.json",
     "build:test": "tsc -p tsconfig-test.json",
     "clean": "rimraf coverage lib *.tgz",
-    "format": "prettier --write '{src,test}/**/*.{ts,json}' '*.{json,md}'",
+    "format": "prettier --write '{src,test}/**/*.{ts,json}' '*.{json,md,yaml}'",
     "lint:src": "eslint 'src/**/*.ts'",
     "lint:test": "eslint 'test/**/*.ts'",
     "prebuild:src": "run-s clean lint:src",
     "prebuild:test": "run-s clean lint:test",
     "prepack": "run-s build:src",
     "pretest": "run-s build:test",
+    "preversion": "run-s lint:src test",
     "test": "jest --coverage --collectCoverageFrom='lib/src/**/*.js' lib/test"
   },
   "devDependencies": {
@@ -42,7 +43,9 @@
     "@typescript-eslint/eslint-plugin": "1.6.0",
     "@typescript-eslint/parser": "1.6.0",
     "eslint": "5.16.0",
+    "eslint-config-airbnb-base": "13.1.0",
     "eslint-config-prettier": "4.1.0",
+    "eslint-plugin-import": "2.16.0",
     "husky": "1.3.1",
     "jest": "24.7.1",
     "lint-staged": "8.1.5",
@@ -53,19 +56,41 @@
   },
   "eslintConfig": {
     "parser": "@typescript-eslint/parser",
+    "plugins": [
+      "@typescript-eslint"
+    ],
     "parserOptions": {
       "project": "./tsconfig.json"
     },
+    "env": {
+      "jest": true
+    },
+    "settings": {
+      "import/resolver": {
+        "node": {
+          "extensions": [
+            ".ts"
+          ]
+        }
+      }
+    },
     "extends": [
+      "airbnb-base",
       "plugin:@typescript-eslint/recommended",
       "prettier",
       "prettier/@typescript-eslint"
     ],
     "rules": {
-      "@typescript-eslint/explicit-member-accessibility": "none",
-      "@typescript-eslint/explicit-function-return-type": {
-        "allowExpressions": true
-      }
+      "no-undef": 0,
+      "import/prefer-default-export": 0,
+      "class-methods-use-this": 0,
+      "@typescript-eslint/explicit-member-accessibility": 0,
+      "@typescript-eslint/explicit-function-return-type": [
+        1,
+        {
+          "allowExpressions": true
+        }
+      ]
     }
   },
   "husky": {
@@ -74,7 +99,7 @@
     }
   },
   "lint-staged": {
-    "*.{ts,json,md}": [
+    "*.{ts,json,md,yml}": [
       "prettier --write",
       "git add"
     ]

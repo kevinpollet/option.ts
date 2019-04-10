@@ -4,3 +4,10 @@ node_js:
   - lts/dubnium
 notifications:
   email: false
+deploy:
+  provider: npm
+  email: pollet.kevin@gmail.com
+  api_key:
+    secure: s529NArjBjQ0SDAajkNnn3YhE9PYkY56yNYUx7hw6jCBRj4hgcpL9PfSOG1DCM69OLEdQwH+clf4HotfO6Pxt/g1nawaNaXzDXI959XP1iDf3yDTgr0/t65xwZuFNn7GGmcbL/fmwK518PSLQYUffr2CSZRBcI+JqWucxZJrsO1BxIRqQUQqoOkqM4esz8WagZYLaOAImEf61foglWmkhzlpMa9c9SHemLDTHDRsDZFo6ME5Su/5q+J19pxsVdyf24dVYGtnfAlecMAa33fHnT1LcXNO+QKvFLxei/SfnM3ufUB0PlZzrdhcM0Tx8YAteVrLb2E+0pW24vgCqcCq00QPeeF4/OiEZe7z1gbI2Cb07oPJbxVbVP/tndKnKxYulJKo+fou2PjIFvsv9QOMlVG22Mski4ZNvatll/aOgI8Ic9oPXN2GhPUSJZOyU7WWWX1UifYvBdILBSRk2PBfIGTomPhzR1ft2MKZ/w6Oc8OyOSyTxMzzKhAlWvJu4ycJL1R6G8wOACvM25qTAhhXizQU4Rv0hUIGgE5b+y1GD63PqdCm1hhdo35RTPg6XgDBjofBotQ37ux7Ofy5mWvAGWAYX8N7Dx0TefqEIpebZptsG5RHYmF4CiztyHvF38nYoNAEneksO2AVHfESoj+HlSQJa/KmvcmOuaGCp0ECGbY=
+  on:
+    tags: true

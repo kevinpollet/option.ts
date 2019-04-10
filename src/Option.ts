@@ -86,6 +86,13 @@ export interface Option<A> {
   match<B>(matcher: Matcher<A, B>): B;
 
   /**
+   * Returns this Option if it is nonempty, otherwise return the result of evaluating alternative.
+   *
+   * @param f - The alternative function.
+   */
+  orElse(f: () => Option<A>): Option<A>;
+
+  /**
    * Returns the option's value if it is nonempty, or undefined if it is empty.
    */
   orUndefined(): A | undefined;

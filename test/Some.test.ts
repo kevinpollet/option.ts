@@ -120,6 +120,16 @@ describe("Some", () => {
     });
   });
 
+  describe("orElse", () => {
+    it("should always return this Option", () => {
+      const alternativeFn = jest.fn(() => new Some(12));
+      const result = option.orElse(alternativeFn);
+
+      expect(result).toBe(option);
+      expect(alternativeFn).not.toBeCalled();
+    });
+  });
+
   describe("orUndefined", () => {
     it("should always return undefined", () => {
       const result = option.orUndefined();

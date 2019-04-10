@@ -58,6 +58,10 @@ export class Some<A> implements Option<A> {
     return matcher.some(this.value);
   }
 
+  orElse(): Option<A> {
+    return this;
+  }
+
   orUndefined(): A {
     return this.value;
   }

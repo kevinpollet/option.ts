@@ -8,6 +8,8 @@
 import { Option } from "../src/Option";
 import { None } from "../src/None";
 import { NoSuchElementError } from "../src/NoSuchElementError";
+import { Optional } from "../src/Optional";
+import { Some } from "../src/Some";
 
 describe("None", () => {
   const option: Option<number> = None.INSTANCE;
@@ -88,6 +90,16 @@ describe("None", () => {
       expect(result).toBe("none");
       expect(noneFn).toBeCalledTimes(1);
       expect(someFn).toBeCalledTimes(0);
+    });
+  });
+
+  describe("orElse", () => {
+    it("should always return the alternative", () => {
+      const alternativeFn = jest.fn(() => Optional.from(12));
+      const result = option.orElse(alternativeFn);
+
+      expect(result).toBeInstanceOf(Some);
+      expect(alternativeFn).toBeCalledTimes(1);
     });
   });
 

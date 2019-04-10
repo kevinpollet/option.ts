@@ -2,6 +2,12 @@
 
 Pragmatic monads for TypeScript.
 
+## Install
+
+```
+$ npm install --save monatic
+```
+
 ## Scripts
 
 - `clean`: Remove generated files

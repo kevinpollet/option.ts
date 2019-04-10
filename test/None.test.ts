@@ -5,9 +5,9 @@
  * found in the LICENSE.md file.
  */
 
-import { Option } from "../../src/option/Option";
-import { None } from "../../src/option/None";
-import { NoSuchElementError } from "../../src/option/NoSuchElementError";
+import { Option } from "../src/Option";
+import { None } from "../src/None";
+import { NoSuchElementError } from "../src/NoSuchElementError";
 
 describe("None", () => {
   const option: Option<number> = None.INSTANCE;

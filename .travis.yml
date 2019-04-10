@@ -2,6 +2,9 @@ language: node_js
 node_js:
   - lts/carbon
   - lts/dubnium
+script:
+  - npm run lint:src
+  - npm run test
 notifications:
   email: false
 deploy:

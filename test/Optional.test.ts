@@ -5,9 +5,9 @@
  * found in the LICENSE.md file.
  */
 
-import { None } from "../../src/option/None";
-import { Optional } from "../../src/option/Optional";
-import { Some } from "../../src/option/Some";
+import { None } from "../src/None";
+import { Optional } from "../src/Optional";
+import { Some } from "../src/Some";
 
 describe("Optional", () => {
   describe("NONE", () => {

@@ -10,8 +10,7 @@ import { NoSuchElementError } from "./NoSuchElementError";
 import { Matcher } from "./Matcher";
 
 // TODO check typescript type system
-// eslint-disable-next-line @typescript-eslint/no-explicit-any
-export class None implements Option<any> {
+export class None implements Option<never> {
   static readonly INSTANCE = new None();
 
   private constructor() {} // eslint-disable-line
@@ -20,28 +19,23 @@ export class None implements Option<any> {
     return false;
   }
 
-  // eslint-disable-next-line @typescript-eslint/no-explicit-any
-  filter(): Option<any> {
+  filter(): Option<never> {
     return this;
   }
 
-  // eslint-disable-next-line @typescript-eslint/no-explicit-any
-  filterNot(): Option<any> {
+  filterNot(): Option<never> {
     return this;
   }
 
-  // eslint-disable-next-line @typescript-eslint/no-explicit-any
   flatMap<B>(): Option<B> {
     return this;
   }
 
-  // eslint-disable-line @typescript-eslint/no-explicit-any
   get(): never {
     throw new NoSuchElementError();
   }
 
-  // eslint-disable-next-line @typescript-eslint/no-explicit-any
-  getOrElse(defaultValue: any): any {
+  getOrElse(defaultValue: never): never {
     return defaultValue;
   }
 
@@ -54,17 +48,14 @@ export class None implements Option<any> {
   }
 
   map<B>(): Option<B> {
-    const cast = this as unknown;
-    return cast as Option<B>;
+    return this;
   }
 
-  // eslint-disable-next-line @typescript-eslint/no-explicit-any
-  match<B>(matcher: Matcher<any, B>): B {
+  match<B>(matcher: Matcher<never, B>): B {
     return matcher.none();
   }
 
-  // eslint-disable-next-line @typescript-eslint/no-explicit-any
-  orElse(f: () => Option<any>): Option<any> {
+  orElse(f: () => Option<never>): Option<never> {
     return f();
   }
 }

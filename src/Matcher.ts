@@ -6,6 +6,6 @@
  */
 
 export interface Matcher<A, B> {
-  none: () => NonNullable<B>;
-  some: (value: Readonly<A>) => NonNullable<B>;
+  none: () => B;
+  some: (value: A) => B;
 }

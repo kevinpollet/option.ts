@@ -67,8 +67,4 @@ export class None implements Option<any> {
   orElse(f: () => Option<any>): Option<any> {
     return f();
   }
-
-  orUndefined(): undefined {
-    return undefined;
-  }
 }

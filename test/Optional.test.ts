@@ -23,14 +23,40 @@ describe("Optional", () => {
       expect(Optional.some(2)).toBeInstanceOf(Some));
   });
 
-  describe("option", () => {
+  describe("from", () => {
     it("should return an instance of None if value is undefined", () =>
       expect(Optional.from(undefined)).toBeInstanceOf(None));
 
     it("should return an instance of None if value is null", () =>
       expect(Optional.from(null)).toBeInstanceOf(None));
 
-    it("should return an instance of Some if value is not undefined and null", () =>
+    it("should return an instance of Some if value is not undefined or null", () =>
       expect(Optional.from(2)).toBeInstanceOf(Some));
+  });
+
+  describe("fromPromise", () => {
+    it("should return an instance of promise resolving to None if promise value is undefined", async () => {
+      const resolvedOption = await Optional.fromPromise(
+        Promise.resolve(undefined)
+      ).get();
+
+      expect(resolvedOption).toBeInstanceOf(None);
+    });
+
+    it("should return an instance of promise resolving to None if promise value is null", async () => {
+      const resolvedOption = await Optional.fromPromise(
+        Promise.resolve(null)
+      ).get();
+
+      expect(resolvedOption).toBeInstanceOf(None);
+    });
+
+    it("should return an instance of promise resolving to Some if promise value is not undefined or null", async () => {
+      const resolvedOption = await Optional.fromPromise(
+        Promise.resolve(12)
+      ).get();
+
+      expect(resolvedOption).toBeInstanceOf(Some);
+    });
   });
 });

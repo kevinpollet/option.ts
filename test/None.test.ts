@@ -102,12 +102,4 @@ describe("None", () => {
       expect(alternativeFn).toBeCalledTimes(1);
     });
   });
-
-  describe("orUndefined", () => {
-    it("should always return undefined", () => {
-      const result = option.orUndefined();
-
-      expect(result).not.toBeDefined();
-    });
-  });
 });

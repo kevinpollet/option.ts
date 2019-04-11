@@ -8,15 +8,21 @@
 import { None } from "./None";
 import { Option } from "./Option";
 import { Some } from "./Some";
+import { OptionAsync } from "./OptionAsync";
 
 export abstract class Optional {
   static readonly NONE = None.INSTANCE;
 
-  static from<A>(value: NonNullable<A> | undefined | null): Option<A> {
-    return value ? Optional.some(value) : Optional.NONE;
+  static from<A>(value: A): Option<NonNullable<A>> {
+    return value ? Optional.some(value as NonNullable<A>) : Optional.NONE;
   }
 
-  static some<A>(value: NonNullable<A>): Option<A> {
+  static fromPromise<A>(promise: Promise<A>): OptionAsync<NonNullable<A>> {
+    const optionAsync = promise.then(result => Optional.from(result));
+    return new OptionAsync(optionAsync);
+  }
+
+  static some<A>(value: NonNullable<A>): Option<NonNullable<A>> {
     return new Some(value);
   }
 }

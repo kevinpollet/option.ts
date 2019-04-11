@@ -5,7 +5,6 @@
  * found in the LICENSE.md file.
  */
 
-import { PredicateFn, MapFn } from "./Fns";
 import { Matcher } from "./Matcher";
 
 /**
@@ -20,7 +19,7 @@ export interface Option<A> {
    *
    * @param p - The predicate function.
    */
-  exists(p: PredicateFn<A>): boolean;
+  exists(p: (value: Readonly<A>) => boolean): boolean;
 
   /**
    * Returns this Option if it is nonempty and the predicate p is verified.
@@ -28,7 +27,7 @@ export interface Option<A> {
    *
    * @param p - The predicate function.
    */
-  filter(p: PredicateFn<A>): Option<A>;
+  filter(p: (value: Readonly<A>) => boolean): Option<A>;
 
   /**
    * Returns this Option if it is nonempty and the predicate p is not verified.
@@ -36,7 +35,7 @@ export interface Option<A> {
    *
    * @param p - The predicate function.
    */
-  filterNot(p: PredicateFn<A>): Option<A>;
+  filterNot(p: (value: Readonly<A>) => boolean): Option<A>;
 
   /**
    * Returns the result of applying the mapping function to this Option value if is nonempty.
@@ -44,7 +43,7 @@ export interface Option<A> {
    *
    * @param m - The mapping function.
    */
-  flatMap<B>(m: MapFn<A, Option<B>>): Option<B>;
+  flatMap<B>(m: (value: Readonly<A>) => Option<B>): Option<B>;
 
   /**
    * Returns the option's value.
@@ -75,7 +74,7 @@ export interface Option<A> {
    *
    * @param m - The mapping function.
    */
-  map<B>(m: MapFn<A, NonNullable<B>>): Option<B>;
+  map<B>(m: (value: Readonly<A>) => NonNullable<B>): Option<B>;
 
   /**
    * Returns the result of applying the matcher function some if Option is nonempty.
@@ -91,9 +90,4 @@ export interface Option<A> {
    * @param f - The alternative function.
    */
   orElse(f: () => Option<A>): Option<A>;
-
-  /**
-   * Returns the option's value if it is nonempty, or undefined if it is empty.
-   */
-  orUndefined(): A | undefined;
 }

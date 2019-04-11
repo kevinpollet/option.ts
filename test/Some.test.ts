@@ -11,7 +11,7 @@ import { Some } from "../src/Some";
 
 describe("Some", () => {
   const value = 12;
-  const option: Option<number> = new Some(value);
+  const option: Option<number> = new Some(12);
 
   describe("exists", () => {
     it("should return true if exist function return true", () => {
@@ -127,14 +127,6 @@ describe("Some", () => {
 
       expect(result).toBe(option);
       expect(alternativeFn).not.toBeCalled();
-    });
-  });
-
-  describe("orUndefined", () => {
-    it("should always return undefined", () => {
-      const result = option.orUndefined();
-
-      expect(result).toBe(value);
     });
   });
 });

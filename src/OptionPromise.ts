@@ -41,7 +41,7 @@ export class OptionPromise<A> {
         none: async () => None.INSTANCE as Option<B>,
         some: async value => {
           const result = m(value);
-          return result instanceof OptionPromise ? result.unwrap() : result;
+          return result instanceof OptionPromise ? result.toPromise() : result;
         },
       })
     );
@@ -83,8 +83,7 @@ export class OptionPromise<A> {
     );
   }
 
-  // TODO better name
-  unwrap(): Promise<Option<A>> {
+  toPromise(): Promise<Option<A>> {
     return this.optionPromise;
   }
 }

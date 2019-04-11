@@ -38,7 +38,7 @@ describe("Optional", () => {
     it("should return an instance of promise resolving to None if promise value is undefined", async () => {
       const resolvedOption = await Optional.fromPromise(
         Promise.resolve(undefined)
-      ).unwrap();
+      ).toPromise();
 
       expect(resolvedOption).toBeInstanceOf(None);
     });
@@ -46,7 +46,7 @@ describe("Optional", () => {
     it("should return an instance of promise resolving to None if promise value is null", async () => {
       const resolvedOption = await Optional.fromPromise(
         Promise.resolve(null)
-      ).unwrap();
+      ).toPromise();
 
       expect(resolvedOption).toBeInstanceOf(None);
     });
@@ -54,7 +54,7 @@ describe("Optional", () => {
     it("should return an instance of promise resolving to Some if promise value is not undefined or null", async () => {
       const resolvedOption = await Optional.fromPromise(
         Promise.resolve(12)
-      ).unwrap();
+      ).toPromise();
 
       expect(resolvedOption).toBeInstanceOf(Some);
     });

@@ -1,7 +1,7 @@
 {
   "name": "monatic",
   "version": "1.0.0-beta",
-  "description": "Pragmatic Monads for TypeScript",
+  "description": "Type-safe and pragmatic Monads for TypeScript",
   "author": "kevinpollet <pollet.kevin@gmail.com>",
   "license": "MIT",
   "main": "lib/index.js",

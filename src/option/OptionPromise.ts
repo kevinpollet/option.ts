@@ -38,7 +38,7 @@ export class OptionPromise<A> {
   ): OptionPromise<B> {
     const mappedOptionPromise = this.optionPromise.then(option =>
       option.match({
-        none: async () => None.INSTANCE as Option<B>,
+        none: async () => None as Option<B>,
         some: async value => {
           const result = m(value);
           return result instanceof OptionPromise ? result.toPromise() : result;
@@ -54,10 +54,10 @@ export class OptionPromise<A> {
   ): OptionPromise<B> {
     const mappedOptionPromise = this.optionPromise.then(option =>
       option.match({
-        none: async () => None.INSTANCE as Option<NonNullable<B>>,
+        none: async () => None as Option<NonNullable<B>>,
         some: async value => {
           const mappedValue = await m(value);
-          return new Some(mappedValue);
+          return Some(mappedValue);
         },
       })
     );

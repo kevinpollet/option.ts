@@ -5,13 +5,13 @@
  * found in the LICENSE.md file.
  */
 
-import { None } from "../src/None";
-import { Option } from "../src/Option";
-import { Some } from "../src/Some";
+import { None } from "../../src/option/None";
+import { Option } from "../../src/option/Option";
+import { Some } from "../../src/option/Some";
 
 describe("Some", () => {
   const value = 12;
-  const option: Option<number> = new Some(12);
+  const option: Option<number> = Some(12);
 
   describe("exists", () => {
     it("should return true if exist function return true", () => {
@@ -43,7 +43,7 @@ describe("Some", () => {
     it("should return None if predicate function return false", () => {
       const filterFn = jest.fn(() => false);
 
-      expect(option.filter(filterFn)).toBe(None.INSTANCE);
+      expect(option.filter(filterFn)).toBe(None);
       expect(filterFn).toBeCalledTimes(1);
       expect(filterFn).toBeCalledWith(value);
     });
@@ -61,7 +61,7 @@ describe("Some", () => {
     it("should return None if predicate function return true", () => {
       const filterNotFn = jest.fn(() => true);
 
-      expect(option.filterNot(filterNotFn)).toBe(None.INSTANCE);
+      expect(option.filterNot(filterNotFn)).toBe(None);
       expect(filterNotFn).toBeCalledTimes(1);
       expect(filterNotFn).toBeCalledWith(value);
     });
@@ -69,10 +69,10 @@ describe("Some", () => {
 
   describe("flatMap", () => {
     it("should return the flatMap function result", () => {
-      const flatMapFn = jest.fn(() => new Some(value.toString()));
+      const flatMapFn = jest.fn(() => Some(value.toString()));
       const newOption = option.flatMap(flatMapFn);
 
-      expect(newOption).toBeInstanceOf(Some);
+      expect(newOption.isDefined()).toBeTruthy();
       expect(newOption.get()).toBe(value.toString());
       expect(flatMapFn).toBeCalledTimes(1);
     });
@@ -101,7 +101,7 @@ describe("Some", () => {
       const mapFn = jest.fn((v: number) => v.toString());
       const newOption = option.map(mapFn);
 
-      expect(newOption).toBeInstanceOf(Some);
+      expect(newOption.isDefined()).toBeTruthy();
       expect(newOption.get()).toBe(value.toString());
       expect(mapFn).toBeCalledTimes(1);
       expect(mapFn).toBeCalledWith(value);
@@ -122,7 +122,7 @@ describe("Some", () => {
 
   describe("orElse", () => {
     it("should always return this Option", () => {
-      const alternativeFn = jest.fn(() => new Some(12));
+      const alternativeFn = jest.fn(() => Some(12));
       const result = option.orElse(alternativeFn);
 
       expect(result).toBe(option);

@@ -1,7 +1,7 @@
 {
   "name": "monatic",
   "version": "0.0.0",
-  "description": "Pragmatic monads for TypeScript",
+  "description": "Pragmatic Monads for TypeScript",
   "author": "kevinpollet <pollet.kevin@gmail.com>",
   "license": "MIT",
   "main": "lib/index.js",
@@ -17,15 +17,14 @@
   "keywords": [
     "typescript",
     "monads",
-    "option",
-    "result"
+    "type-safe"
   ],
   "files": [
     "lib"
   ],
   "scripts": {
     "build:src": "tsc -p tsconfig.json",
-    "build:test": "tsc -p tsconfig-test.json",
+    "build:test": "tsc -p tsconfig.test.json",
     "clean": "rimraf coverage lib *.tgz",
     "format": "prettier --write '{src,test}/**/*.{ts,json}' '*.{json,md,yaml}'",
     "lint:src": "eslint 'src/**/*.ts'",

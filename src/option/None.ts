@@ -9,26 +9,21 @@ import { Option } from "./Option";
 import { NoSuchElementError } from "./NoSuchElementError";
 import { Matcher } from "./Matcher";
 
-// TODO check typescript type system
-export class None implements Option<never> {
-  static readonly INSTANCE = new None();
-
-  private constructor() {} // eslint-disable-line
-
+class NoneType<A> implements Option<A> {
   exists(): boolean {
     return false;
   }
 
-  filter(): Option<never> {
+  filter(): Option<A> {
     return this;
   }
 
-  filterNot(): Option<never> {
+  filterNot(): Option<A> {
     return this;
   }
 
   flatMap<B>(): Option<B> {
-    return this;
+    return (this as unknown) as Option<B>;
   }
 
   get(): never {
@@ -48,14 +43,16 @@ export class None implements Option<never> {
   }
 
   map<B>(): Option<B> {
-    return this;
+    return (this as unknown) as Option<B>;
   }
 
   match<B>(matcher: Matcher<never, B>): B {
     return matcher.none();
   }
 
-  orElse(f: () => Option<never>): Option<never> {
+  orElse(f: () => Option<A>): Option<A> {
     return f();
   }
 }
+
+export const None = new NoneType<never>();

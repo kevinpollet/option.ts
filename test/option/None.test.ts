@@ -5,14 +5,13 @@
  * found in the LICENSE.md file.
  */
 
-import { Option } from "../src/Option";
-import { None } from "../src/None";
-import { NoSuchElementError } from "../src/NoSuchElementError";
-import { Optional } from "../src/Optional";
-import { Some } from "../src/Some";
+import { Option } from "../../src/option/Option";
+import { None } from "../../src/option/None";
+import { NoSuchElementError } from "../../src/option/NoSuchElementError";
+import { Some } from "../../src/option/Some";
 
 describe("None", () => {
-  const option: Option<number> = None.INSTANCE;
+  const option: Option<number> = None;
 
   describe("exists", () => {
     it("should always return false", () => {
@@ -27,7 +26,7 @@ describe("None", () => {
     it("should always return None", () => {
       const filterFn = jest.fn(() => true);
 
-      expect(option.filter(filterFn)).toBe(None.INSTANCE);
+      expect(option.filter(filterFn)).toBe(None);
       expect(filterFn).not.toBeCalled();
     });
   });
@@ -36,16 +35,16 @@ describe("None", () => {
     it("should always return None", () => {
       const filterNotFn = jest.fn(() => true);
 
-      expect(option.filterNot(filterNotFn)).toBe(None.INSTANCE);
+      expect(option.filterNot(filterNotFn)).toBe(None);
       expect(filterNotFn).not.toBeCalled();
     });
   });
 
   describe("flatMap", () => {
     it("should always return None", () => {
-      const flatMapFn = jest.fn(() => None.INSTANCE);
+      const flatMapFn = jest.fn(() => None);
 
-      expect(option.flatMap(flatMapFn)).toBe(None.INSTANCE);
+      expect(option.flatMap(flatMapFn)).toBe(None);
       expect(flatMapFn).not.toBeCalled();
     });
   });
@@ -76,7 +75,7 @@ describe("None", () => {
       const mapFn = jest.fn((value: number) => value.toString());
       const newOption = option.map(mapFn);
 
-      expect(newOption).toBe(None.INSTANCE);
+      expect(newOption).toBe(None);
       expect(mapFn).not.toBeCalled();
     });
   });
@@ -95,10 +94,10 @@ describe("None", () => {
 
   describe("orElse", () => {
     it("should always return the alternative", () => {
-      const alternativeFn = jest.fn(() => Optional.from(12));
+      const alternativeFn = jest.fn(() => Some(12));
       const result = option.orElse(alternativeFn);
 
-      expect(result).toBeInstanceOf(Some);
+      expect(result.isDefined()).toBeTruthy();
       expect(alternativeFn).toBeCalledTimes(1);
     });
   });

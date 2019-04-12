@@ -1,14 +1,28 @@
-# Monatic &middot; [![Build Status](https://travis-ci.com/kevinpollet/monatic.svg?token=tSMJcyr4W5f93JMvoe6S&branch=master)](https://travis-ci.com/kevinpollet/monatic)
+# Monatic &middot; [![Build Status](https://travis-ci.com/kevinpollet/monatic.svg?token=tSMJcyr4W5f93JMvoe6S&branch=master)](https://travis-ci.com/kevinpollet/monatic) ![TypeScript Version](https://img.shields.io/badge/TypeScript-3.x-blue.svg)
 
-Pragmatic monads for TypeScript.
+✨Type-safe and pragmatic Monads for TypeScript ✨
+
+This library has been designed with type safety and usability in mind. You're encouraged to enable `strictNullChecks` in your TypeScript compiler options to raise `null` or `undefined` misuses at compile time. From TypeScript [documentation][4]:
+
+> In strict null checking mode, the null and undefined values are not in the domain of every type and are only assignable to themselves and any (the one exception being that undefined is also assignable to void).
 
 ## Install
 
+Install with npm:
+
 ```
-$ npm install --save monatic
+$ npm install monatic --save
 ```
 
-## Scripts
+Install with yarn:
+
+```
+$ yarn add monatic
+```
+
+## Contributing
+
+### Scripts
 
 - `clean`: Remove generated files
 - `lint:src`: Lint src files with [ESLint][3]
@@ -20,8 +34,9 @@ $ npm install --save monatic
 
 ## License
 
-See [LICENSE.md](./LICENSE.md)
+[MIT licensed](./LICENSE.md).
 
 [1]: https://prettier.io
 [2]: https://jestjs.io
 [3]: https://eslint.org
+[4]: https://www.typescriptlang.org/docs/handbook/compiler-options.html¨

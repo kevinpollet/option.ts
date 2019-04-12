@@ -1,6 +1,6 @@
 {
   "name": "monatic",
-  "version": "0.0.0",
+  "version": "1.0.0-beta",
   "description": "Pragmatic Monads for TypeScript",
   "author": "kevinpollet <pollet.kevin@gmail.com>",
   "license": "MIT",

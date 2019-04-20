@@ -24,4 +24,9 @@ describe("None", () => {
       expect(option.getOrElse(defaultValue)).toBe(defaultValue);
     });
   });
+
+  describe("pipe", () => {
+    it("should always return None", () =>
+      expect(option.pipe(x => x * 2)).toBe(None));
+  });
 });

@@ -9,7 +9,7 @@ import { isOption } from "./utils/isOption";
 import { Option } from "./Option";
 import { None } from "./None";
 
-export class SomeType<A> implements Option<A> {
+class SomeType<A> implements Option<A> {
   private readonly value: A;
 
   constructor(value: A) {

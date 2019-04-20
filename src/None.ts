@@ -20,7 +20,7 @@ class NoneType implements Option<never> {
   }
 
   pipe<B>(): Option<B> {
-    return new NoneType();
+    return this;
   }
 }
 

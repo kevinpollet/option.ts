@@ -7,7 +7,7 @@
 
 import { None } from "../src/None";
 import { from } from "../src/from";
-import { SomeType } from "../src/Some";
+import { Some } from "../src/Some";
 
 describe("from", () => {
   it("should return None if value is undefined", () =>
@@ -17,5 +17,5 @@ describe("from", () => {
     expect(from(null)).toBe(None));
 
   it("should return Some if value is not undefined or null", () =>
-    expect(from(2)).toBeInstanceOf(SomeType));
+    expect(from(2)).toEqual(Some(2)));
 });

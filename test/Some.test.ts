@@ -21,4 +21,15 @@ describe("Some", () => {
     it("should return the wrapped value", () =>
       expect(option.getOrElse(24)).toBe(value));
   });
+
+  describe("pipe", () => {
+    it("should return Some containing the returned value", () =>
+      expect(option.pipe(x => x * 2)).toEqual(Some(24)));
+
+    it("should return the returned Option", () => {
+      const newOption = Some(12);
+
+      expect(option.pipe(() => newOption)).toBe(newOption);
+    });
+  });
 });

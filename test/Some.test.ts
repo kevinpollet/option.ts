@@ -112,7 +112,7 @@ describe("Some", () => {
     it("should always return the result of matcher function some", () => {
       const noneFn = jest.fn(() => "none");
       const someFn = jest.fn((v: number) => v.toString());
-      const result = option.match({ none: noneFn, some: someFn });
+      const result = option.match({ None: noneFn, Some: someFn });
 
       expect(result).toBe(value.toString());
       expect(noneFn).toBeCalledTimes(0);

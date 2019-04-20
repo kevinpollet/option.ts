@@ -47,7 +47,7 @@ class NoneType<A> implements Option<A> {
   }
 
   match<B>(matcher: Matcher<never, B>): B {
-    return matcher.none();
+    return matcher.None();
   }
 
   orElse(f: () => Option<A>): Option<A> {

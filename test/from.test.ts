@@ -18,20 +18,20 @@ describe("from", () => {
   it("should return Some if value is not undefined or null", () =>
     expect(from(2).isDefined()).toBeTruthy());
 
-  it("should return an OptionPromise instance resolving to None if promise resolve to undefined", async () => {
-    const resolvedOption = await from(Promise.resolve(undefined)).toPromise();
+  it("should return a Promise instance resolving to None if promise resolve to undefined", async () => {
+    const resolvedOption = await from(Promise.resolve(undefined));
 
     expect(resolvedOption).toBe(None);
   });
 
-  it("should return an an OptionPromise instance resolving to None if promise value is null", async () => {
-    const resolvedOption = await from(Promise.resolve(null)).toPromise();
+  it("should return a Promise instance resolving to None if promise value is null", async () => {
+    const resolvedOption = await from(Promise.resolve(null));
 
     expect(resolvedOption).toBe(None);
   });
 
   it("should return an OptionPromise instance resolving to Some if promise value is not undefined or null", async () => {
-    const resolvedOption = await from(Promise.resolve(12)).toPromise();
+    const resolvedOption = await from(Promise.resolve(12));
 
     expect(resolvedOption.isDefined()).toBeTruthy();
   });

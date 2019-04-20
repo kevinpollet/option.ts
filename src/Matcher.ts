@@ -6,6 +6,6 @@
  */
 
 export interface Matcher<A, B> {
-  none: () => B;
-  some: (value: A) => B;
+  None: () => B;
+  Some: (value: A) => B;
 }

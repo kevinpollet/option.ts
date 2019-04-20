@@ -54,7 +54,7 @@ class SomeType<A> implements Option<A> {
   }
 
   match<B>(matcher: Matcher<A, B>): B {
-    return matcher.some(this.value);
+    return matcher.Some(this.value);
   }
 
   orElse(): Option<A> {

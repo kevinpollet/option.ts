@@ -8,9 +8,11 @@
 import { Function } from "./Function";
 
 export interface Option<A> {
+  chain<B>(op: Function<A, Option<B>>): Option<B>;
+
   get(): A;
 
   getOrElse<B>(defaultValue: B): A | B;
 
-  chain<B>(op: Function<A, Option<B>>): Option<B>;
+  match<B>({ None, Some }: { None: () => B; Some: Function<A, B> }): B;
 }

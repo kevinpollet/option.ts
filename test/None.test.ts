@@ -13,6 +13,11 @@ import { NoSuchElementError } from "../src/NoSuchElementError";
 describe("None", () => {
   const option: Option<number> = None;
 
+  describe("chain", () => {
+    it("should always return None", () =>
+      expect(option.chain(() => Some(2))).toBe(None));
+  });
+
   describe("get", () => {
     it("should throw NoSuchElementError", () =>
       expect(() => option.get()).toThrowError(NoSuchElementError));
@@ -26,8 +31,15 @@ describe("None", () => {
     });
   });
 
-  describe("chain", () => {
-    it("should always return None", () =>
-      expect(option.chain(() => Some(2))).toBe(None));
+  describe("match", () => {
+    it("should call and return the None function result", () => {
+      const noneFn = jest.fn(() => false);
+      const someFn = jest.fn(() => true);
+      const matcher = { None: noneFn, Some: someFn };
+
+      expect(option.match(matcher)).toBeTruthy;
+      expect(noneFn).toBeCalledTimes(1);
+      expect(someFn).toBeCalledTimes(0);
+    });
   });
 });

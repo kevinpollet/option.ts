@@ -15,6 +15,10 @@ class SomeType<A> implements Option<A> {
     this.value = value;
   }
 
+  chain<B>(op: Function<A, Option<B>>): Option<B> {
+    return op(this.value);
+  }
+
   get(): A {
     return this.value;
   }
@@ -23,8 +27,8 @@ class SomeType<A> implements Option<A> {
     return this.value;
   }
 
-  chain<B>(op: Function<A, Option<B>>): Option<B> {
-    return op(this.value);
+  match<B>({ Some }: { Some: Function<A, B> }): B {
+    return Some(this.value);
   }
 }
 

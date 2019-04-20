@@ -9,7 +9,9 @@ import { Option } from "./Option";
 import { NoSuchElementError } from "./NoSuchElementError";
 
 class NoneType<A> implements Option<A> {
-  constructor() {}
+  chain<B>(): Option<B> {
+    return this;
+  }
 
   get(): never {
     throw new NoSuchElementError();
@@ -19,8 +21,8 @@ class NoneType<A> implements Option<A> {
     return defaultValue;
   }
 
-  chain<B>(): Option<B> {
-    return this;
+  match<B>({ None }: { None: () => B }): B {
+    return None();
   }
 }
 

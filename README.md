@@ -11,13 +11,13 @@ This library has been designed with type safety and usability in mind. You're en
 npm
 
 ```
-$ npm install monatic --save
+$ npm install optional.ts --save
 ```
 
 yarn
 
 ```
-$ yarn add monatic
+$ yarn add optional.ts
 ```
 
 ## Usage

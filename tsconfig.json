@@ -1,7 +1,7 @@
 {
   "extends": "@kevinpollet/tsconfig",
   "compilerOptions": {
-    "lib": ["es2018", "dom"],
+    "lib": ["es2018"],
     "outDir": "lib"
   },
   "include": ["src"]

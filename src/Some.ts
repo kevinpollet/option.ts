@@ -32,4 +32,5 @@ class SomeType<A> implements Option<A> {
   }
 }
 
-export const Some = <A>(value: A): SomeType<A> => new SomeType(value);
+export const Some = <A>(value: NonNullable<A>): SomeType<NonNullable<A>> =>
+  new SomeType(value);

@@ -1,23 +1,24 @@
 {
-  "name": "monatic",
+  "name": "optional.ts",
   "version": "1.0.0-beta",
-  "description": "Type-safe and pragmatic Monads for TypeScript",
+  "description": "Option monad for TypeScript",
   "author": "kevinpollet <pollet.kevin@gmail.com>",
   "license": "MIT",
   "main": "lib/index.js",
   "types": "lib/index.d.ts",
-  "homepage": "https://github.com/kevinpollet/monatic#readme",
+  "homepage": "https://github.com/kevinpollet/optional.ts#readme",
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/kevinpollet/monatic.git"
+    "url": "git+https://github.com/kevinpollet/optional.ts.git"
   },
   "bugs": {
-    "url": "https://github.com/kevinpollet/monatic/issues"
+    "url": "https://github.com/kevinpollet/optional.ts/issues"
   },
   "keywords": [
     "typescript",
-    "monads",
-    "type-safe"
+    "monad",
+    "option",
+    "typed"
   ],
   "files": [
     "lib"

@@ -5,9 +5,4 @@
  * found in the LICENSE.md file.
  */
 
-export interface Option<A> {
-  get(): A;
-  getOrElse<B>(defaultValue: B): A | B;
-  pipe<B>(op: (value: A) => B): Option<B>;
-  pipe<B>(op: (value: A) => Option<B>): Option<B>;
-}
+export const map = <A, B>(m: (a: A) => B) => (value: A): B => m(value);

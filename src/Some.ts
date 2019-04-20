@@ -5,31 +5,15 @@
  * found in the LICENSE.md file.
  */
 
-import { None } from "./None";
+import { isOption } from "./utils/isOption";
 import { Option } from "./Option";
-import { Matcher } from "./Matcher";
+import { None } from "./None";
 
-class SomeType<A> implements Option<A> {
+export class SomeType<A> implements Option<A> {
   private readonly value: A;
 
   constructor(value: A) {
     this.value = value;
-  }
-
-  exists(p: (value: Readonly<A>) => boolean): boolean {
-    return p(this.value);
-  }
-
-  filter(p: (value: Readonly<A>) => boolean): Option<A> {
-    return this.exists(p) ? this : None;
-  }
-
-  filterNot(p: (value: Readonly<A>) => boolean): Option<A> {
-    return this.exists(p) ? None : this;
-  }
-
-  flatMap<B>(m: (value: Readonly<A>) => Option<B>): Option<B> {
-    return m(this.value);
   }
 
   get(): A {
@@ -40,27 +24,13 @@ class SomeType<A> implements Option<A> {
     return this.value;
   }
 
-  isEmpty(): boolean {
-    return false;
-  }
-
-  isDefined(): boolean {
-    return true;
-  }
-
-  map<B>(m: (value: Readonly<A>) => NonNullable<B>): Option<B> {
-    const mappedValue = m(this.value);
-    return new SomeType(mappedValue);
-  }
-
-  match<B>(matcher: Matcher<A, B>): B {
-    return matcher.Some(this.value);
-  }
-
-  orElse(): Option<A> {
-    return this;
+  pipe<B>(op: (value: A) => B | Option<B>): Option<B> {
+    const result = op(this.value);
+    if (isOption(result)) {
+      return result;
+    }
+    return result ? new SomeType(result) : None;
   }
 }
 
-export const Some = <A>(value: NonNullable<A>): SomeType<NonNullable<A>> =>
-  new SomeType(value);
+export const Some = <A>(value: A): SomeType<A> => new SomeType(value);

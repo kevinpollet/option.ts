@@ -7,52 +7,21 @@
 
 import { Option } from "./Option";
 import { NoSuchElementError } from "./NoSuchElementError";
-import { Matcher } from "./Matcher";
 
-class NoneType<A> implements Option<A> {
-  exists(): boolean {
-    return false;
-  }
-
-  filter(): Option<A> {
-    return this;
-  }
-
-  filterNot(): Option<A> {
-    return this;
-  }
-
-  flatMap<B>(): Option<B> {
-    return (this as unknown) as Option<B>;
-  }
+class NoneType implements Option<never> {
+  constructor() {}
 
   get(): never {
     throw new NoSuchElementError();
   }
 
-  getOrElse(defaultValue: never): never {
+  getOrElse<B>(defaultValue: B): B {
     return defaultValue;
   }
 
-  isEmpty(): boolean {
-    return true;
-  }
-
-  isDefined(): boolean {
-    return false;
-  }
-
-  map<B>(): Option<B> {
-    return (this as unknown) as Option<B>;
-  }
-
-  match<B>(matcher: Matcher<never, B>): B {
-    return matcher.None();
-  }
-
-  orElse(f: () => Option<A>): Option<A> {
-    return f();
+  pipe<B>(): Option<B> {
+    return new NoneType();
   }
 }
 
-export const None = new NoneType<never>();
+export const None = new NoneType();

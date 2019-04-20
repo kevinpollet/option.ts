@@ -89,7 +89,7 @@
         }
       ],
       "@typescript-eslint/explicit-function-return-type": [
-        2,
+        0,
         {
           "allowExpressions": true
         }

@@ -20,22 +20,6 @@ yarn
 $ yarn add optional.ts
 ```
 
-## Usage
-
-```ts
-import { from, Some, None, Option } from "optional.ts";
-
-const random = (): number | undefined => {
-  const value = Math.floor(Math.random() * 100); // generates a random number between [0,100[
-  return value % 2 === 0 ? value : undefined;
-};
-
-// Will be 10 if random value is undefined, value * 2 otherwise
-const x = from(random())
-  .map(v => v * 2)
-  .getOrElse(10);
-```
-
 ## License
 
 [MIT licensed](./LICENSE.md).

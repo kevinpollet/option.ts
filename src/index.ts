@@ -5,9 +5,9 @@
  * found in the LICENSE.md file.
  */
 
-import { Option } from "./option/Option";
-import { Some } from "./option/Some";
-import { None } from "./option/None";
-import { from } from "./option/from";
+import { Option } from "./Option";
+import { Some } from "./Some";
+import { None } from "./None";
+import { from } from "./from";
 
 export { from, None, Some, Option };

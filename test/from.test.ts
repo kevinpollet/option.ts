@@ -5,8 +5,8 @@
  * found in the LICENSE.md file.
  */
 
-import { None } from "../../src/option/None";
-import { from } from "../../src/option/from";
+import { None } from "../src/None";
+import { from } from "../src/from";
 
 describe("from", () => {
   it("should return None if value is undefined", () =>

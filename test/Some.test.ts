@@ -5,9 +5,9 @@
  * found in the LICENSE.md file.
  */
 
-import { None } from "../../src/option/None";
-import { Option } from "../../src/option/Option";
-import { Some } from "../../src/option/Some";
+import { None } from "../src/None";
+import { Option } from "../src/Option";
+import { Some } from "../src/Some";
 
 describe("Some", () => {
   const value = 12;

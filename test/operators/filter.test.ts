@@ -14,13 +14,13 @@ describe("filter", () => {
   const option = from(12);
 
   it("should return Some if the given predicate is verified", () => {
-    const result = option.pipe(filter(x => x % 2 === 0));
+    const result = option.chain(filter(x => x % 2 === 0));
 
     expect(result).toEqual(Some(12));
   });
 
   it("should return None if the given predicate is not verified", () => {
-    const result = option.pipe(filter(x => x % 2 !== 0));
+    const result = option.chain(filter(x => x % 2 !== 0));
 
     expect(result).toBe(None);
   });

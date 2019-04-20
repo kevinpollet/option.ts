@@ -12,5 +12,5 @@ export interface Option<A> {
 
   getOrElse<B>(defaultValue: B): A | B;
 
-  pipe<B>(op: Function<A, Option<B>>): Option<B>;
+  chain<B>(op: Function<A, Option<B>>): Option<B>;
 }

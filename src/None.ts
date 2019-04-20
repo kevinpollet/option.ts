@@ -19,7 +19,7 @@ class NoneType<A> implements Option<A> {
     return defaultValue;
   }
 
-  pipe<B>(): Option<B> {
+  chain<B>(): Option<B> {
     return this;
   }
 }

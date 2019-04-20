@@ -13,7 +13,7 @@ describe("map", () => {
   const option = from(12);
 
   it("should return Some with the mapped value", () => {
-    const result = option.pipe(map(x => x * 2));
+    const result = option.chain(map(x => x * 2));
 
     expect(result).toEqual(Some(24));
   });

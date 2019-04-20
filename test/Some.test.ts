@@ -22,14 +22,14 @@ describe("Some", () => {
       expect(option.getOrElse(24)).toBe(value));
   });
 
-  describe("pipe", () => {
+  describe("chain", () => {
     it("should return Some containing the returned value", () =>
-      expect(option.pipe(() => Some(2))).toEqual(Some(2)));
+      expect(option.chain(() => Some(2))).toEqual(Some(2)));
 
     it("should return the returned Option", () => {
       const newOption = Some(12);
 
-      expect(option.pipe(() => newOption)).toBe(newOption);
+      expect(option.chain(() => newOption)).toBe(newOption);
     });
   });
 });

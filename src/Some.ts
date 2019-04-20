@@ -23,7 +23,7 @@ class SomeType<A> implements Option<A> {
     return this.value;
   }
 
-  pipe<B>(op: Function<A, Option<B>>): Option<B> {
+  chain<B>(op: Function<A, Option<B>>): Option<B> {
     return op(this.value);
   }
 }

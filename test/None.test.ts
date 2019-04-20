@@ -26,8 +26,8 @@ describe("None", () => {
     });
   });
 
-  describe("pipe", () => {
+  describe("chain", () => {
     it("should always return None", () =>
-      expect(option.pipe(() => Some(2))).toBe(None));
+      expect(option.chain(() => Some(2))).toBe(None));
   });
 });

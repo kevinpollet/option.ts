@@ -29,9 +29,9 @@
     "format": "prettier --write '{src,test}/**/*.{ts,json}' '*.{json,md,yaml}'",
     "lint:src": "eslint 'src/**/*.ts'",
     "lint:test": "eslint 'test/**/*.ts'",
-    "prebuild": "run-s clean lint:src",
+    "prebuild": "run-p clean lint:src",
     "prepack": "run-s build",
-    "pretest": "run-s build lint:test",
+    "pretest": "run-p build lint:test",
     "preversion": "run-s test",
     "test": "jest --coverage --collectCoverageFrom='src/**/*.ts' test"
   },

@@ -5,4 +5,14 @@
  * found in the LICENSE.md file.
  */
 
-export const map = <A, B>(m: (a: A) => B) => (value: A): B => m(value);
+import { Function } from "../Function";
+import { Option } from "../Option";
+import { None } from "../None";
+import { Some } from "../Some";
+
+export const map = <A, B>(mapper: Function<A, B>): Function<A, Option<B>> => (
+  value: A
+): Option<B> => {
+  const result = mapper(value);
+  return result ? Some(result) : None;
+};

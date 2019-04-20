@@ -5,9 +5,12 @@
  * found in the LICENSE.md file.
  */
 
+import { Function } from "../Function";
 import { Option } from "../Option";
 import { None } from "../None";
 import { Some } from "../Some";
 
-export const filterNot = <A>(p: (a: A) => boolean) => (value: A): Option<A> =>
-  p(value) ? None : Some(value);
+export const filterNot = <A>(
+  predicate: Function<A, boolean>
+): Function<A, Option<A>> => (value: A): Option<A> =>
+  predicate(value) ? None : Some(value);

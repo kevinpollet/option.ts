@@ -24,7 +24,7 @@ describe("Some", () => {
 
   describe("pipe", () => {
     it("should return Some containing the returned value", () =>
-      expect(option.pipe(x => x * 2)).toEqual(Some(24)));
+      expect(option.pipe(() => Some(2))).toEqual(Some(2)));
 
     it("should return the returned Option", () => {
       const newOption = Some(12);

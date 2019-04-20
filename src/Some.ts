@@ -5,9 +5,8 @@
  * found in the LICENSE.md file.
  */
 
-import { isOption } from "./utils/isOption";
+import { Function } from "./Function";
 import { Option } from "./Option";
-import { None } from "./None";
 
 class SomeType<A> implements Option<A> {
   private readonly value: A;
@@ -24,12 +23,8 @@ class SomeType<A> implements Option<A> {
     return this.value;
   }
 
-  pipe<B>(op: (value: A) => B | Option<B>): Option<B> {
-    const result = op(this.value);
-    if (isOption(result)) {
-      return result;
-    }
-    return result ? new SomeType(result) : None;
+  pipe<B>(op: Function<A, Option<B>>): Option<B> {
+    return op(this.value);
   }
 }
 

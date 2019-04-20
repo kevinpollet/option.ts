@@ -8,7 +8,7 @@
 import { Option } from "./Option";
 import { NoSuchElementError } from "./NoSuchElementError";
 
-class NoneType implements Option<never> {
+class NoneType<A> implements Option<A> {
   constructor() {}
 
   get(): never {
@@ -24,4 +24,4 @@ class NoneType implements Option<never> {
   }
 }
 
-export const None = new NoneType();
+export const None = new NoneType<never>();

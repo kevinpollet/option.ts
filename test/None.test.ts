@@ -6,6 +6,7 @@
  */
 
 import { Option } from "../src/Option";
+import { Some } from "../src/Some";
 import { None } from "../src/None";
 import { NoSuchElementError } from "../src/NoSuchElementError";
 
@@ -27,6 +28,6 @@ describe("None", () => {
 
   describe("pipe", () => {
     it("should always return None", () =>
-      expect(option.pipe(x => x * 2)).toBe(None));
+      expect(option.pipe(() => Some(2))).toBe(None));
   });
 });

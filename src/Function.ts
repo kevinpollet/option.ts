@@ -5,7 +5,6 @@
  * found in the LICENSE.md file.
  */
 
-import { Option } from "../Option";
-
-export const isOption = <B>(p: B | Option<B>): p is Option<B> =>
-  (p as Option<B>).get !== undefined;
+export interface Function<A, B> {
+  (value: A): B;
+}

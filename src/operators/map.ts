@@ -14,5 +14,5 @@ export const map = <A, B>(mapper: Function<A, B>): Function<A, Option<B>> => (
   value: A
 ): Option<B> => {
   const result = mapper(value);
-  return result ? Some(result) : None;
+  return result ? Some(result as NonNullable<B>) : None;
 };

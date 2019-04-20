@@ -13,4 +13,4 @@ import { Some } from "../Some";
 export const filterNot = <A>(
   predicate: Function<A, boolean>
 ): Function<A, Option<A>> => (value: A): Option<A> =>
-  predicate(value) ? None : Some(value);
+  predicate(value) ? None : Some(value as NonNullable<A>);

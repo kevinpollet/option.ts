@@ -24,18 +24,16 @@
     "lib"
   ],
   "scripts": {
-    "build:src": "tsc -p tsconfig.json",
-    "build:test": "tsc -p tsconfig.test.json",
-    "clean": "rimraf coverage lib *.tgz",
+    "build": "tsc -p tsconfig.json",
+    "clean": "rimraf coverage lib",
     "format": "prettier --write '{src,test}/**/*.{ts,json}' '*.{json,md,yaml}'",
     "lint:src": "eslint 'src/**/*.ts'",
     "lint:test": "eslint 'test/**/*.ts'",
-    "prebuild:src": "run-s clean lint:src",
-    "prebuild:test": "run-s clean lint:test",
-    "prepack": "run-s build:src",
-    "pretest": "run-s build:test",
-    "preversion": "run-s lint:src test",
-    "test": "jest --coverage --collectCoverageFrom='lib/src/**/*.js' lib/test"
+    "prebuild": "run-s clean lint:src",
+    "prepack": "run-s build",
+    "pretest": "run-s build lint:test",
+    "preversion": "run-s test",
+    "test": "jest --coverage --collectCoverageFrom='src/**/*.ts' test"
   },
   "devDependencies": {
     "@kevinpollet/tsconfig": "0.1.0",
@@ -50,7 +48,11 @@
     "npm-run-all": "4.1.5",
     "prettier": "1.16.4",
     "rimraf": "2.6.3",
+    "ts-jest": "24.0.2",
     "typescript": "3.4.3"
+  },
+  "jest": {
+    "preset": "ts-jest"
   },
   "husky": {
     "hooks": {
@@ -67,11 +69,11 @@
     "trailingComma": "es5"
   },
   "eslintConfig": {
-    "parserOptions": {
-      "project": "./tsconfig.json"
-    },
     "env": {
       "es6": true
+    },
+    "parserOptions": {
+      "project": "./tsconfig.json"
     },
     "extends": [
       "eslint:recommended",
@@ -87,7 +89,7 @@
         }
       ],
       "@typescript-eslint/explicit-function-return-type": [
-        1,
+        2,
         {
           "allowExpressions": true
         }

@@ -12,17 +12,6 @@ describe("Some", () => {
   const value = 12;
   const option: Option<number> = Some(12);
 
-  describe("chain", () => {
-    it("should return Some containing the returned value", () =>
-      expect(option.chain(() => Some(2))).toEqual(Some(2)));
-
-    it("should return the returned Option", () => {
-      const newOption = Some(12);
-
-      expect(option.chain(() => newOption)).toBe(newOption);
-    });
-  });
-
   describe("get", () => {
     it("should return the wrapped value", () =>
       expect(option.get()).toBe(value));

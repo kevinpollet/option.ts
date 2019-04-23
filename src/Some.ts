@@ -5,18 +5,15 @@
  * found in the LICENSE.md file.
  */
 
-import { Function } from "./Function";
 import { Option } from "./Option";
+import { UnaryFunction } from "./UnaryFunction";
 
-class SomeType<A> implements Option<A> {
+class SomeType<A> extends Option<A> {
   private readonly value: A;
 
   constructor(value: A) {
+    super();
     this.value = value;
-  }
-
-  chain<B>(op: Function<A, Option<B>>): Option<B> {
-    return op(this.value);
   }
 
   get(): A {
@@ -27,7 +24,7 @@ class SomeType<A> implements Option<A> {
     return this.value;
   }
 
-  match<B>({ Some }: { Some: Function<A, B> }): B {
+  match<B>({ Some }: { Some: UnaryFunction<A, B> }): B {
     return Some(this.value);
   }
 }

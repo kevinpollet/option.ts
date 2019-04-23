@@ -6,17 +6,11 @@
  */
 
 import { Option } from "../src/Option";
-import { Some } from "../src/Some";
 import { None } from "../src/None";
 import { NoSuchElementError } from "../src/NoSuchElementError";
 
 describe("None", () => {
   const option: Option<number> = None;
-
-  describe("chain", () => {
-    it("should always return None", () =>
-      expect(option.chain(() => Some(2))).toBe(None));
-  });
 
   describe("get", () => {
     it("should throw NoSuchElementError", () =>

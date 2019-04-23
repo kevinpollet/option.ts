@@ -5,12 +5,16 @@
  * found in the LICENSE.md file.
  */
 
-import { Function } from "../Function";
+import { ChainFunction } from "../ChainFunction";
+import { UnaryFunction } from "../UnaryFunction";
 import { Option } from "../Option";
 import { None } from "../None";
 import { Some } from "../Some";
 
 export const filter = <A>(
-  predicate: Function<A, boolean>
-): Function<A, Option<A>> => (value: A): Option<A> =>
-  predicate(value) ? Some(value as NonNullable<A>) : None;
+  predicate: UnaryFunction<A, boolean>
+): ChainFunction<A, A> => (option: Option<A>): Option<A> =>
+  option.match({
+    None: () => None,
+    Some: value => (predicate(value) ? Some(value as NonNullable<A>) : None),
+  });

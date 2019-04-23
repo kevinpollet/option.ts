@@ -5,6 +5,6 @@
  * found in the LICENSE.md file.
  */
 
-export interface Function<A, B> {
+export interface UnaryFunction<A, B> {
   (value: A): B;
 }

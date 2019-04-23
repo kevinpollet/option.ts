@@ -5,14 +5,23 @@
  * found in the LICENSE.md file.
  */
 
-import { Function } from "./Function";
+import { ChainFunction } from "./ChainFunction";
+import { UnaryFunction } from "./UnaryFunction";
 
-export interface Option<A> {
-  chain<B>(op: Function<A, Option<B>>): Option<B>;
+export abstract class Option<A> {
+  chain<B>(op: ChainFunction<A, B>): Option<B> {
+    return op(this);
+  }
 
-  get(): A;
+  abstract get(): A;
 
-  getOrElse<B>(defaultValue: B): A | B;
+  abstract getOrElse<B>(defaultValue: B): A | B;
 
-  match<B>({ None, Some }: { None: () => B; Some: Function<A, B> }): B;
+  abstract match<B>({
+    None,
+    Some,
+  }: {
+    None: () => B;
+    Some: UnaryFunction<A, B>;
+  }): B;
 }

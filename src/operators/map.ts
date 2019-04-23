@@ -5,14 +5,19 @@
  * found in the LICENSE.md file.
  */
 
-import { Function } from "../Function";
+import { UnaryFunction } from "../UnaryFunction";
 import { Option } from "../Option";
 import { None } from "../None";
 import { Some } from "../Some";
+import { ChainFunction } from "../ChainFunction";
 
-export const map = <A, B>(mapper: Function<A, B>): Function<A, Option<B>> => (
-  value: A
-): Option<B> => {
-  const result = mapper(value);
-  return result ? Some(result as NonNullable<B>) : None;
-};
+export const map = <A, B>(mapper: UnaryFunction<A, B>): ChainFunction<A, B> => (
+  option: Option<A>
+): Option<B> =>
+  option.match({
+    None: () => None,
+    Some: value => {
+      const result = mapper(value);
+      return result ? Some(result as NonNullable<B>) : None;
+    },
+  });

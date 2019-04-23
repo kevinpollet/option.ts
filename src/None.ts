@@ -8,11 +8,7 @@
 import { Option } from "./Option";
 import { NoSuchElementError } from "./NoSuchElementError";
 
-class NoneType<A> implements Option<A> {
-  chain<B>(): Option<B> {
-    return this;
-  }
-
+class NoneType<A> extends Option<A> {
   get(): never {
     throw new NoSuchElementError();
   }

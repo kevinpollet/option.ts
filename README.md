@@ -2,22 +2,46 @@
 
 Option monad for TypeScript ✨🎉
 
-This library has been designed with type safety and usability in mind. You're encouraged to enable `strictNullChecks` in your TypeScript compiler options to raise `null` or `undefined` misuses at compile time. From TypeScript [documentation][1]:
-
-> In strict null checking mode, the null and undefined values are not in the domain of every type and are only assignable to themselves and any (the one exception being that undefined is also assignable to void).
-
 ## Install
 
 npm
 
-```
+```shell
 $ npm install optional.ts --save
 ```
 
 yarn
 
-```
+```shell
 $ yarn add optional.ts
+```
+
+## Type safety
+
+You're strongly encouraged to enable the `strictNullChecks` flag in your TypeScript compiler options to raise errors at compile time. From the doc:
+
+> In strict null checking mode, the null and undefined values are not in the domain of every type and are only assignable to themselves and any (the one exception being that undefined is also assignable to void).
+
+```ts
+// With strictNullChecks the following lines will raise an error at compile time instead
+Some(null);
+Some(undefined);
+```
+
+## Usage
+
+```ts
+import { from, Option } from "optional.ts";
+import { filter, map } from "optional.ts/lib/operators";
+
+const user: number | undefined = User.findById();
+const address = from(user)
+  .chain(filter(user => user.age > 21))
+  .chain(map(user => user.address))
+  .match({
+    None: () => "none",
+    Some: address => address,
+  });
 ```
 
 ## License

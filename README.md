@@ -43,6 +43,29 @@ const address = from(user)
   });
 ```
 
+## Create your chain operator
+
+With the functional operator abstraction it's really easy to build a custom operator. As an example we will implement an operator returning the character at the given index or None if it doesn't exist:
+
+```ts
+export const pick = (index: number): ChainFunction<string, string> => (
+  option: Option<string>
+): Option<string> =>
+  option.match({
+    None: () => None,
+    Some: value =>
+      index >= 0 && index < value.length ? Some(value.charAt(index)) : None,
+  });
+```
+
+Example of use:
+
+```ts
+from("hello")
+  .chain(pick(0)) // Some("h")
+  .get(); // "h"
+```
+
 ## License
 
 [MIT licensed](./LICENSE.md).

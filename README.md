@@ -23,7 +23,7 @@ You're strongly encouraged to enable the `strictNullChecks` flag in your TypeScr
 > In strict null checking mode, the null and undefined values are not in the domain of every type and are only assignable to themselves and any (the one exception being that undefined is also assignable to void).
 
 ```ts
-// With strictNullChecks the following lines will raise an error at compile time instead
+// With strictNullChecks the following lines will raise an error at compile time
 Some(null);
 Some(undefined);
 ```

@@ -1,5 +1,5 @@
 {
-  "name": "optional.ts",
+  "name": "@kevinpollet/option.ts",
   "version": "0.0.0",
   "description": "Option monad for TypeScript",
   "author": "kevinpollet <pollet.kevin@gmail.com>",
@@ -23,6 +23,9 @@
   "files": [
     "lib"
   ],
+  "publishConfig": {
+    "access": "public"
+  },
   "scripts": {
     "build": "tsc -p tsconfig.json",
     "clean": "rimraf coverage lib",

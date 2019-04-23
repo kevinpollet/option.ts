@@ -1,4 +1,4 @@
-# optional.ts &middot; [![Build Status](https://travis-ci.com/kevinpollet/monatic.svg?token=tSMJcyr4W5f93JMvoe6S&branch=master)](https://travis-ci.com/kevinpollet/monatic) ![TypeScript Version](https://img.shields.io/badge/TypeScript-3.x-blue.svg)
+# option.ts &middot; [![Build Status](https://travis-ci.com/kevinpollet/option.ts.svg?token=tSMJcyr4W5f93JMvoe6S&branch=master)](https://travis-ci.com/kevinpollet/option.ts) ![TypeScript Version](https://img.shields.io/badge/TypeScript-3.x-blue.svg)
 
 Option monad for TypeScript ✨🎉
 
@@ -7,13 +7,13 @@ Option monad for TypeScript ✨🎉
 npm
 
 ```shell
-$ npm install optional.ts --save
+$ npm install @kevinpollet/option.ts --save
 ```
 
 yarn
 
 ```shell
-$ yarn add optional.ts
+$ yarn add @kevinpollet/option.ts
 ```
 
 ## Type safety
@@ -31,8 +31,8 @@ Some(undefined);
 ## Usage
 
 ```ts
-import { from, Option } from "optional.ts";
-import { filter, map } from "optional.ts/lib/operators";
+import { from, Option } from "@kevinpollet/option.ts";
+import { filter, map } from "@kevinpollet/option.ts/lib/operators";
 
 const user: number | undefined = User.findById();
 const address = from(user)

@@ -36,8 +36,7 @@ import { filter, map } from "@kevinpollet/option.ts/lib/operators";
 
 const user: number | undefined = User.findById();
 const address = from(user)
-  .chain(filter(user => user.age > 21))
-  .chain(map(user => user.address))
+  .chain(filter(user => user.age > 21), map(user => user.address))
   .match({
     None: () => "none",
     Some: address => address,

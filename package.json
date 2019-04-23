@@ -85,6 +85,7 @@
       "prettier/@typescript-eslint"
     ],
     "rules": {
+      "no-dupe-class-members": 0,
       "@typescript-eslint/explicit-member-accessibility": [
         2,
         {

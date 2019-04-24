@@ -12,6 +12,14 @@ describe("Some", () => {
   const value = 12;
   const option: Option<number> = Some(12);
 
+  describe("constructor", () => {
+    it("should throw a TypeError if given value is null", () =>
+      expect(() => Some(null as any)).toThrow(TypeError)); // eslint-disable-line @typescript-eslint/no-explicit-any
+
+    it("should throw a TypeError if given value is undefined", () =>
+      expect(() => Some(undefined as any)).toThrow(TypeError)); // eslint-disable-line @typescript-eslint/no-explicit-any
+  });
+
   describe("get", () => {
     it("should return the wrapped value", () =>
       expect(option.get()).toBe(value));

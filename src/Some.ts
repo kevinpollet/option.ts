@@ -12,6 +12,10 @@ class SomeType<A> extends Option<A> {
   private readonly value: A;
 
   constructor(value: A) {
+    if (!value) {
+      throw new TypeError("value cannot be undefined or null");
+    }
+
     super();
     this.value = value;
   }

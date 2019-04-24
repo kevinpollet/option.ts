@@ -28,6 +28,14 @@ class SomeType<A> extends Option<A> {
     return this.value;
   }
 
+  isDefined(): boolean {
+    return true;
+  }
+
+  isEmpty(): boolean {
+    return false;
+  }
+
   match<B>({ Some }: { Some: UnaryFunction<A, B> }): B {
     return Some(this.value);
   }

@@ -5,20 +5,8 @@
  * found in the LICENSE.md file.
  */
 
-import { Option } from "../src/Option";
+import { DummyOption } from "./utils/DummyOption";
 import { None } from "../src/None";
-
-class DummyOption extends Option<never> {
-  get(): never {
-    throw new Error("Method not implemented.");
-  }
-  getOrElse<B>(): B {
-    throw new Error("Method not implemented.");
-  }
-  match<B>(): B {
-    throw new Error("Method not implemented.");
-  }
-}
 
 describe("Option", () => {
   describe("chain", () => {

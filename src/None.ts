@@ -17,6 +17,14 @@ class NoneType<A> extends Option<A> {
     return defaultValue;
   }
 
+  isDefined(): boolean {
+    return false;
+  }
+
+  isEmpty(): boolean {
+    return true;
+  }
+
   match<B>({ None }: { None: () => B }): B {
     return None();
   }

@@ -25,6 +25,14 @@ describe("None", () => {
     });
   });
 
+  describe("isDefined", () => {
+    it("should return false", () => expect(None.isDefined()).toBeFalsy());
+  });
+
+  describe("isEmpty", () => {
+    it("should return true", () => expect(None.isEmpty()).toBeTruthy());
+  });
+
   describe("match", () => {
     it("should call and return the None function result", () => {
       const noneFn = jest.fn(() => false);

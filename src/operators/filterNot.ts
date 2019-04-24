@@ -6,15 +6,9 @@
  */
 
 import { UnaryFunction } from "../UnaryFunction";
-import { Option } from "../Option";
-import { None } from "../None";
-import { Some } from "../Some";
 import { ChainFunction } from "../ChainFunction";
+import { filter } from "./filter";
 
 export const filterNot = <A>(
   predicate: UnaryFunction<A, boolean>
-): ChainFunction<A, A> => (option: Option<A>): Option<A> =>
-  option.match({
-    None: () => None,
-    Some: value => (predicate(value) ? None : Some(value as NonNullable<A>)),
-  });
+): ChainFunction<A, A> => filter((value: A) => !predicate(value));

@@ -30,6 +30,14 @@ describe("Some", () => {
       expect(option.getOrElse(24)).toBe(value));
   });
 
+  describe("isDefined", () => {
+    it("should return true", () => expect(Some(1).isDefined()).toBeTruthy());
+  });
+
+  describe("isEmpty", () => {
+    it("should return false", () => expect(Some(1).isEmpty()).toBeFalsy());
+  });
+
   describe("match", () => {
     it("should call and return the Some function result", () => {
       const noneFn = jest.fn(() => false);

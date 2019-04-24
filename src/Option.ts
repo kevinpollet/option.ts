@@ -57,6 +57,10 @@ export abstract class Option<A> {
 
   abstract getOrElse<B>(defaultValue: B): A | B;
 
+  abstract isDefined(): boolean;
+
+  abstract isEmpty(): boolean;
+
   abstract match<B>({
     None,
     Some,

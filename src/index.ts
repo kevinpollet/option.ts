@@ -9,4 +9,4 @@ export { from } from "./from";
 export { Option } from "./Option";
 export { Some } from "./Some";
 export { None } from "./None";
-export { filter, filterNot, map } from "./operators";
+export { filter, filterNot, flatMap, map } from "./operators";

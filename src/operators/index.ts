@@ -7,4 +7,5 @@
 
 export { filter } from "./filter";
 export { filterNot } from "./filterNot";
+export { flatMap } from "./flatMap";
 export { map } from "./map";

@@ -5,7 +5,6 @@
  * found in the LICENSE.md file.
  */
 
-export { from } from "./from";
-export { Option } from "./Option";
-export { Some } from "./Some";
-export { None } from "./None";
+export { filter } from "./filter";
+export { filterNot } from "./filterNot";
+export { map } from "./map";

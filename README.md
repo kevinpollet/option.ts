@@ -43,18 +43,39 @@ const address = from(user)
   });
 ```
 
-## Create your chain operator
+### Operators
 
-With the functional operator abstraction it's really easy to build a custom operator. As an example we will implement an operator returning the character at the given index or None if it doesn't exist:
+An operator is a function implementing the following signature: `<A,B>(option: Option<A>) => Option<B>`. The operator abstraction allow functional composition and ease the creation of new operators. Look at the following sections for more details!
+
+#### Composition
+
+Operators can be composed like :
 
 ```ts
-export const pick = (index: number): ChainFunction<string, string> => (
+import { from, Option } from "@kevinpollet/option.ts";
+import { filter, map } from "@kevinpollet/option.ts/lib/operators";
+
+const pickFirstChar = (option: Option<string>) =>
+  map<string, string>(s => s.charAt(0))(
+    filter<string>(s => s.length > 0)(option)
+  );
+
+const char = from("hello")
+  .chain(pickFirstChar)
+  .getOrElse(""); // return "h"
+```
+
+#### Create an operator
+
+It's also really easy to build a custom operator. As an example we will implement the `pickFirstChar` operator returning the first character of a string or None if it doesn't exist:
+
+```ts
+export const pickFirstChar = (index: number) => (
   option: Option<string>
 ): Option<string> =>
   option.match({
     None: () => None,
-    Some: value =>
-      index >= 0 && index < value.length ? Some(value.charAt(index)) : None,
+    Some: value => (index > 0 ? Some(value.charAt(index)) : None),
   });
 ```
 

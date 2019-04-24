@@ -79,14 +79,6 @@ export const pickFirstChar = (index: number) => (
   });
 ```
 
-Example of use:
-
-```ts
-from("hello")
-  .chain(pick(0)) // Some("h")
-  .get(); // "h"
-```
-
 ## License
 
 [MIT licensed](./LICENSE.md).

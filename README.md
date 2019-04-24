@@ -31,8 +31,7 @@ Some(undefined);
 ## Usage
 
 ```ts
-import { from, Option } from "@kevinpollet/option.ts";
-import { filter, map } from "@kevinpollet/option.ts/lib/operators";
+import { filter, from, map, Option } from "@kevinpollet/option.ts";
 
 const user: number | undefined = User.findById();
 const address = from(user)
@@ -52,8 +51,7 @@ An operator is a function implementing the following signature: `<A,B>(option: O
 Operators can be composed like :
 
 ```ts
-import { from, Option } from "@kevinpollet/option.ts";
-import { filter, map } from "@kevinpollet/option.ts/lib/operators";
+import { filter, from, map, Option } from "@kevinpollet/option.ts";
 
 const pickFirstChar = (option: Option<string>) =>
   map<string, string>(s => s.charAt(0))(

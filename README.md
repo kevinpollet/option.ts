@@ -1,31 +1,24 @@
 # option.ts &middot; [![Build Status](https://travis-ci.com/kevinpollet/option.ts.svg?branch=master)](https://travis-ci.com/kevinpollet/option.ts) ![TypeScript Version](https://img.shields.io/badge/TypeScript-3.x-blue.svg)
 
-Option monad for TypeScript ✨🎉
-
-## Install
-
-npm
-
-```shell
-$ npm install @kevinpollet/option.ts --save
-```
-
-yarn
-
-```shell
-$ yarn add @kevinpollet/option.ts
-```
+Option monad for TypeScript ✨
 
 ## Type safety
 
-You're strongly encouraged to enable the `strictNullChecks` flag in your TypeScript compiler options to raise errors at compile time. From the doc:
+You're strongly encouraged to add the `strictNullChecks` flag to your TypeScript compiler options. Adding this flag will raise compile time errors in the following cases:
+
+```ts
+Some(null); // Error
+Some(undefined); // Error
+```
+
+From TypeScript documentation:
 
 > In strict null checking mode, the null and undefined values are not in the domain of every type and are only assignable to themselves and any (the one exception being that undefined is also assignable to void).
 
-```ts
-// With strictNullChecks the following lines will raise an error at compile time
-Some(null);
-Some(undefined);
+## Install
+
+```shell
+$ npm install --save @kevinpollet/option.ts
 ```
 
 ## Usage

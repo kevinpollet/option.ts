@@ -24,6 +24,14 @@ export class OptionPromise<A> {
     return new OptionPromise(filteredValue);
   }
 
+  get(): Promise<A> {
+    return this.value.then(option => option.get());
+  }
+
+  getOrElse(value: A): Promise<A> {
+    return this.value.then(option => option.getOrElse(value));
+  }
+
   map<B>(fn: (value: A) => B): OptionPromise<NonNullable<B>> {
     const mappedValue = this.value.then(option => option.map(fn));
     return new OptionPromise(mappedValue);

@@ -41,6 +41,22 @@ describe("Some", () => {
     });
   });
 
+  describe("get", () => {
+    it("should call the get function on the underlying option", async () => {
+      const result = await optionPromise.get();
+
+      expect(result).toBe(value);
+    });
+  });
+
+  describe("getOrElse", () => {
+    it("should call the getOrElse function on the underlying option", async () => {
+      const result = await optionPromise.getOrElse(23);
+
+      expect(result).toBe(value);
+    });
+  });
+
   describe("map", () => {
     it("should call the map function on the underlying option", async () => {
       const fn = jest.fn(v => v.toString());

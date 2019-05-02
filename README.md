@@ -35,4 +35,4 @@ const name: string = from(user)
 
 ## License
 
-[MIT](./LICENSE.md).
+[MIT](./LICENSE.md)

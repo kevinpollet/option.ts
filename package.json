@@ -21,7 +21,7 @@
     "access": "public"
   },
   "scripts": {
-    "build": "tsc",
+    "build": "tsc -p tsconfig.build.json",
     "clean": "rimraf coverage lib",
     "format": "prettier --write '**/*.{ts,json,md,yml}' '!{lib,coverage}/**/*'",
     "lint:src": "eslint 'src/**/*.ts'",

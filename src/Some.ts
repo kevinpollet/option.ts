@@ -54,9 +54,9 @@ class SomeType<A> implements Option<A> {
     return false;
   }
 
-  map<B>(fn: (value: Readonly<A>) => B): Option<B> {
+  map<B>(fn: (value: Readonly<A>) => B): Option<NonNullable<B>> {
     const mappedValue = fn(this.value);
-    return mappedValue ? new SomeType(mappedValue) : None;
+    return mappedValue ? new SomeType(mappedValue as NonNullable<B>) : None;
   }
 
   orElse(): Option<A> {

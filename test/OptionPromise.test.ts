@@ -9,13 +9,36 @@ import { Some } from "../src/Some";
 import { OptionPromise } from "../src/OptionPromise";
 
 describe("Some", () => {
-  const option = Some(12);
+  const value = 12;
+  const option = Some(value);
   const promise = Promise.resolve(option);
   const optionPromise: OptionPromise<number> = new OptionPromise(promise);
 
   describe("asPromise", () => {
     it("should return the underlying promise", () =>
       expect(optionPromise.asPromise()).toBe(promise));
+  });
+
+  describe("filter", () => {
+    it("should call the filter function on the underlying option", async () => {
+      const fn = jest.fn(v => v === value);
+
+      await optionPromise.filter(fn);
+
+      expect(fn).toBeCalledTimes(1);
+      expect(fn).toBeCalledWith(value);
+    });
+  });
+
+  describe("filterNot", () => {
+    it("should call the filterNot function on the underlying option", async () => {
+      const fn = jest.fn(v => v === value);
+
+      await optionPromise.filterNot(fn);
+
+      expect(fn).toBeCalledTimes(1);
+      expect(fn).toBeCalledWith(value);
+    });
   });
 
   describe("map", () => {
@@ -25,7 +48,7 @@ describe("Some", () => {
       await optionPromise.map(fn);
 
       expect(fn).toBeCalledTimes(1);
-      expect(fn).toBeCalledWith(option.get());
+      expect(fn).toBeCalledWith(value);
     });
   });
 });

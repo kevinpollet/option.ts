@@ -14,6 +14,16 @@ export class OptionPromise<A> {
     this.value = value;
   }
 
+  filter(fn: (value: Readonly<A>) => boolean): OptionPromise<A> {
+    const filteredValue = this.value.then(option => option.filter(fn));
+    return new OptionPromise(filteredValue);
+  }
+
+  filterNot(fn: (value: Readonly<A>) => boolean): OptionPromise<A> {
+    const filteredValue = this.value.then(option => option.filterNot(fn));
+    return new OptionPromise(filteredValue);
+  }
+
   map<B>(fn: (value: A) => B): OptionPromise<NonNullable<B>> {
     const mappedValue = this.value.then(option => option.map(fn));
     return new OptionPromise(mappedValue);

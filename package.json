@@ -4,22 +4,16 @@
   "description": "Option monad for TypeScript",
   "author": "kevinpollet <pollet.kevin@gmail.com>",
   "license": "MIT",
-  "main": "lib/index.js",
-  "types": "lib/index.d.ts",
   "homepage": "https://github.com/kevinpollet/optional.ts#readme",
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/kevinpollet/optional.ts.git"
-  },
-  "bugs": {
-    "url": "https://github.com/kevinpollet/optional.ts/issues"
-  },
+  "repository": "github:kevinpollet/option.ts",
+  "bugs": "https://github.com/kevinpollet/optional.ts/issues",
   "keywords": [
     "typescript",
     "monad",
-    "option",
-    "typed"
+    "option"
   ],
+  "main": "lib/index.js",
+  "types": "lib/index.d.ts",
   "files": [
     "lib"
   ],
@@ -27,9 +21,9 @@
     "access": "public"
   },
   "scripts": {
-    "build": "tsc -p tsconfig.json",
+    "build": "tsc",
     "clean": "rimraf coverage lib",
-    "format": "prettier --write '{src,test}/**/*.{ts,json}' '*.{json,md,yaml}'",
+    "format": "prettier --write '**/*.{ts,json,md,yml}' '!{lib,coverage}/**/*'",
     "lint:src": "eslint 'src/**/*.ts'",
     "lint:test": "eslint 'test/**/*.ts'",
     "prebuild": "run-p clean lint:src",
@@ -74,9 +68,6 @@
   "eslintConfig": {
     "env": {
       "es6": true
-    },
-    "parserOptions": {
-      "project": "./tsconfig.json"
     },
     "extends": [
       "eslint:recommended",

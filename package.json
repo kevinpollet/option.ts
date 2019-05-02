@@ -27,9 +27,8 @@
     "lint:src": "eslint 'src/**/*.ts'",
     "lint:test": "eslint 'test/**/*.ts'",
     "prebuild": "run-p clean lint:src",
-    "prepack": "run-s build",
-    "pretest": "run-p build lint:test",
-    "preversion": "run-s test",
+    "pretest": "run-s lint:test",
+    "preversion": "run-p build test",
     "test": "jest --coverage --collectCoverageFrom='src/**/*.ts' test"
   },
   "devDependencies": {

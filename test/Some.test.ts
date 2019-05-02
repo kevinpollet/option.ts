@@ -118,7 +118,23 @@ describe("Some", () => {
   });
 
   describe("map", () => {
-    it("should return a defined option containing the mapped value", () => {
+    it("should return None if mapped value is null", () => {
+      const fn = jest.fn(() => null);
+
+      expect(option.map(fn)).toBe(None);
+      expect(fn).toBeCalledTimes(1);
+      expect(fn).toBeCalledWith(value);
+    });
+
+    it("should return None if mapped value is undefined", () => {
+      const fn = jest.fn(() => undefined);
+
+      expect(option.map(fn)).toBe(None);
+      expect(fn).toBeCalledTimes(1);
+      expect(fn).toBeCalledWith(value);
+    });
+
+    it("should return a defined option with mapped value", () => {
       const fn = jest.fn(v => v.toString());
 
       expect(option.map(fn)).toEqual(Some(value.toString()));

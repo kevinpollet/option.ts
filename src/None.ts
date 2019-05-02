@@ -26,6 +26,10 @@ class NoneType<A> implements Option<A> {
     return unknownThis as Option<B>;
   }
 
+  forEach(): void {
+    return;
+  }
+
   get(): A {
     throw new NoSuchElementError();
   }

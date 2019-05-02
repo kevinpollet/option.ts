@@ -14,6 +14,8 @@ export interface Option<A> {
 
   flatMap<B>(fn: (value: A) => Option<B>): Option<B>;
 
+  forEach(fn: (value: A) => void): void;
+
   get(): A;
 
   getOrElse(value: A): A;

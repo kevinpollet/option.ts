@@ -44,6 +44,15 @@ describe("None", () => {
     });
   });
 
+  describe("forEach", () => {
+    it("should return None", () => {
+      option.forEach(fn);
+
+      expect(option).toBe(None);
+      expect(fn).not.toBeCalled;
+    });
+  });
+
   describe("get", () => {
     it("should throw NoSuchElementError", () =>
       expect(() => option.get()).toThrowError(NoSuchElementError));

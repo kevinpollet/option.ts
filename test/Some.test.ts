@@ -86,6 +86,19 @@ describe("Some", () => {
     });
   });
 
+  describe("forEach", () => {
+    it("should apply the given side effect function and return this option", () => {
+      const option: Option<{ value: number }> = Some({ value });
+      const fn = jest.fn(v => (v.value += 1));
+
+      option.forEach(fn);
+
+      expect(option).toBe(option);
+      expect(option).toEqual(Some({ value: value + 1 }));
+      expect(fn).toBeCalledTimes(1);
+    });
+  });
+
   describe("get", () => {
     it("should return the option value", () =>
       expect(option.get()).toBe(value));

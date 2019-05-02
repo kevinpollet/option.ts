@@ -8,13 +8,30 @@
 import { Option } from "./Option";
 import { NoSuchElementError } from "./NoSuchElementError";
 
-class NoneType<A> extends Option<A> {
-  get(): never {
+class NoneType<A> implements Option<A> {
+  exists(): boolean {
+    return false;
+  }
+
+  filter(): Option<A> {
+    return this;
+  }
+
+  filterNot(): Option<A> {
+    return this;
+  }
+
+  flatMap<B>(): Option<B> {
+    const unknownThis = this as unknown;
+    return unknownThis as Option<B>;
+  }
+
+  get(): A {
     throw new NoSuchElementError();
   }
 
-  getOrElse<B>(defaultValue: B): B {
-    return defaultValue;
+  getOrElse(value: A): A {
+    return value;
   }
 
   isDefined(): boolean {
@@ -25,8 +42,13 @@ class NoneType<A> extends Option<A> {
     return true;
   }
 
-  match<B>({ None }: { None: () => B }): B {
-    return None();
+  map<B>(): Option<B> {
+    const unknownThis = this as unknown;
+    return unknownThis as Option<B>;
+  }
+
+  orElse(value: Option<A>): Option<A> {
+    return value;
   }
 }
 

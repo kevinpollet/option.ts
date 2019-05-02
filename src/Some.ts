@@ -6,18 +6,32 @@
  */
 
 import { Option } from "./Option";
-import { UnaryFunction } from "./UnaryFunction";
+import { None } from "./None";
 
-class SomeType<A> extends Option<A> {
+class SomeType<A> implements Option<A> {
   private readonly value: A;
 
   constructor(value: A) {
     if (!value) {
       throw new TypeError("value cannot be undefined or null");
     }
-
-    super();
     this.value = value;
+  }
+
+  exists(fn: (value: A) => boolean): boolean {
+    return fn(this.value);
+  }
+
+  filter(fn: (value: A) => boolean): Option<A> {
+    return fn(this.value) ? this : None;
+  }
+
+  filterNot(fn: (value: A) => boolean): Option<A> {
+    return !fn(this.value) ? this : None;
+  }
+
+  flatMap<B>(fn: (value: A) => Option<B>): Option<B> {
+    return fn(this.value);
   }
 
   get(): A {
@@ -36,8 +50,13 @@ class SomeType<A> extends Option<A> {
     return false;
   }
 
-  match<B>({ Some }: { Some: UnaryFunction<A, B> }): B {
-    return Some(this.value);
+  map<B>(fn: (value: A) => B): Option<B> {
+    const mappedValue = fn(this.value);
+    return mappedValue ? new SomeType(mappedValue) : None;
+  }
+
+  orElse(): Option<A> {
+    return this;
   }
 }
 

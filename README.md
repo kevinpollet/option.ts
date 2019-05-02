@@ -21,57 +21,6 @@ From TypeScript documentation:
 $ npm install --save @kevinpollet/option.ts
 ```
 
-## Usage
-
-```ts
-import { filter, from, map, Option } from "@kevinpollet/option.ts";
-
-const user: number | undefined = User.findById();
-const address = from(user)
-  .chain(filter(user => user.age > 21), map(user => user.address))
-  .match({
-    None: () => "none",
-    Some: address => address,
-  });
-```
-
-### Operators
-
-An operator is a function implementing the following signature: `<A,B>(option: Option<A>) => Option<B>`. The operator abstraction allow functional composition and ease the creation of new operators. Look at the following sections for more details!
-
-#### Composition
-
-Operators can be composed like :
-
-```ts
-import { filter, from, map, Option } from "@kevinpollet/option.ts";
-
-const pickFirstChar = (option: Option<string>) =>
-  map<string, string>(s => s.charAt(0))(
-    filter<string>(s => s.length > 0)(option)
-  );
-
-const char = from("hello")
-  .chain(pickFirstChar)
-  .getOrElse(""); // return "h"
-```
-
-#### Create an operator
-
-It's also really easy to build a custom operator. As an example we will implement the `pickFirstChar` operator returning the first character of a string or None if it doesn't exist:
-
-```ts
-export const pickFirstChar = (index: number) => (
-  option: Option<string>
-): Option<string> =>
-  option.match({
-    None: () => None,
-    Some: value => (index > 0 ? Some(value.charAt(index)) : None),
-  });
-```
-
 ## License
 
-[MIT licensed](./LICENSE.md).
-
-[1]: https://www.typescriptlang.org/docs/handbook/compiler-options.html
+[MIT](./LICENSE.md).

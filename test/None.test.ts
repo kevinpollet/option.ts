@@ -8,9 +8,41 @@
 import { Option } from "../src/Option";
 import { None } from "../src/None";
 import { NoSuchElementError } from "../src/NoSuchElementError";
+import { Some } from "../src/Some";
 
 describe("None", () => {
+  const fn = jest.fn();
   const option: Option<number> = None;
+
+  afterEach(() => fn.mockReset());
+
+  describe("exists", () => {
+    it("should return false", () => {
+      expect(option.exists(fn)).toBeFalsy();
+      expect(fn).not.toBeCalled;
+    });
+  });
+
+  describe("filter", () => {
+    it("should return None", () => {
+      expect(option.filter(fn)).toBe(None);
+      expect(fn).not.toBeCalled;
+    });
+  });
+
+  describe("filterNot", () => {
+    it("should return None", () => {
+      expect(option.filterNot(fn)).toBe(None);
+      expect(fn).not.toBeCalled;
+    });
+  });
+
+  describe("flatMap", () => {
+    it("should return None", () => {
+      expect(option.flatMap(fn)).toBe(None);
+      expect(fn).not.toBeCalled;
+    });
+  });
 
   describe("get", () => {
     it("should throw NoSuchElementError", () =>
@@ -18,7 +50,7 @@ describe("None", () => {
   });
 
   describe("getOrElse", () => {
-    it("should return the default value", () => {
+    it("should return the given default value", () => {
       const defaultValue = 24;
 
       expect(option.getOrElse(defaultValue)).toBe(defaultValue);
@@ -26,22 +58,26 @@ describe("None", () => {
   });
 
   describe("isDefined", () => {
-    it("should return false", () => expect(None.isDefined()).toBeFalsy());
+    it("should return false", () => expect(option.isDefined()).toBeFalsy());
   });
 
   describe("isEmpty", () => {
-    it("should return true", () => expect(None.isEmpty()).toBeTruthy());
+    it("should return true", () => expect(option.isEmpty()).toBeTruthy());
   });
 
-  describe("match", () => {
-    it("should call and return the None function result", () => {
-      const noneFn = jest.fn(() => false);
-      const someFn = jest.fn(() => true);
-      const matcher = { None: noneFn, Some: someFn };
+  describe("map", () => {
+    it("should return None", () => {
+      expect(option.map(fn)).toBe(None);
+      expect(fn).not.toBeCalled;
+    });
+  });
 
-      expect(option.match(matcher)).toBeTruthy;
-      expect(noneFn).toBeCalledTimes(1);
-      expect(someFn).toBeCalledTimes(0);
+  describe("orElse", () => {
+    it("should return the alternative", () => {
+      const alternative = Some(12);
+      const option: Option<number> = None;
+
+      expect(option.orElse(alternative)).toBe(alternative);
     });
   });
 });

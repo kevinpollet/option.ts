@@ -8,6 +8,7 @@
 import { None } from "../src/None";
 import { fromPromise } from "../src/fromPromise";
 import { Some } from "../src/Some";
+import { Option } from "../src/Option";
 
 describe("fromPromise", () => {
   it("should return an OptionPromise resolving to None if value is undefined", async () => {
@@ -33,5 +34,13 @@ describe("fromPromise", () => {
     const option = await optionPromise.asPromise();
 
     expect(option).toEqual(Some(value));
+  });
+
+  it("should return an OptionPromise resolving to given promise", async () => {
+    const option: Option<number> = Some(12);
+    const promise = Promise.resolve(option);
+    const optionPromise = fromPromise(promise);
+
+    expect(await optionPromise.asPromise()).toBe(option);
   });
 });

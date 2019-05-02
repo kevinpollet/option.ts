@@ -9,5 +9,5 @@ import { Option } from "./Option";
 import { Some } from "./Some";
 import { None } from "./None";
 
-export const from = <A>(value: NonNullable<A> | undefined | null): Option<A> =>
-  value ? Some(value) : None;
+export const from = <A>(value: A): Option<NonNullable<A>> =>
+  value ? Some(value as NonNullable<A>) : None;

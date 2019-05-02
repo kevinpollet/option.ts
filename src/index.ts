@@ -6,6 +6,8 @@
  */
 
 export { from } from "./from";
-export { Option } from "./Option";
-export { Some } from "./Some";
+export { fromPromise } from "./fromPromise";
 export { None } from "./None";
+export { Option } from "./Option";
+export { OptionPromise } from "./OptionPromise";
+export { Some } from "./Some";

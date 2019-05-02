@@ -6,7 +6,15 @@
  */
 
 import { Option } from "../Option";
+import { NoneType } from "../NoneType";
+import { SomeType } from "../SomeType";
 
-export const isOption = <A>(value: Option<A> | unknown): value is Option<A> => {
-  return value && typeof (value as Option<A>).get !== "undefined";
+/**
+ * Type guard returning `true` if the given value is an {@link Option}, `false` otherwise.
+ *
+ * @param value - The value to check
+ * @returns `true` if the given value is an {@link Option}, `false` otherwise
+ */
+export const isOption = <A>(value: unknown): value is Option<A> => {
+  return value && (value instanceof NoneType || value instanceof SomeType);
 };

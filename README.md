@@ -1,6 +1,6 @@
 # option.ts &middot; [![Build Status](https://travis-ci.com/kevinpollet/option.ts.svg?branch=master)](https://travis-ci.com/kevinpollet/option.ts) ![TypeScript Version](https://img.shields.io/badge/TypeScript-3.x-blue.svg)
 
-Option monad for TypeScript ✨
+✨Option monad for TypeScript ✨
 
 ## Type safety
 
@@ -19,6 +19,18 @@ From TypeScript documentation:
 
 ```shell
 $ npm install --save @kevinpollet/option.ts
+```
+
+## Usage
+
+```ts
+import { from } from "@kevinpollet/option.ts";
+
+const user: User | undefined = findById(1);
+
+const name: string = from(user)
+  .map(value => value.getName())
+  .getOrElse("anonymous");
 ```
 
 ## License

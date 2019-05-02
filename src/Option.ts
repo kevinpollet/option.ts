@@ -6,13 +6,13 @@
  */
 
 export interface Option<A> {
-  exists(fn: (value: A) => boolean): boolean;
+  exists(fn: (value: Readonly<A>) => boolean): boolean;
 
-  filter(fn: (value: A) => boolean): Option<A>;
+  filter(fn: (value: Readonly<A>) => boolean): Option<A>;
 
-  filterNot(fn: (value: A) => boolean): Option<A>;
+  filterNot(fn: (value: Readonly<A>) => boolean): Option<A>;
 
-  flatMap<B>(fn: (value: A) => Option<B>): Option<B>;
+  flatMap<B>(fn: (value: Readonly<A>) => Option<B>): Option<B>;
 
   forEach(fn: (value: A) => void): void;
 
@@ -24,7 +24,7 @@ export interface Option<A> {
 
   isEmpty(): boolean;
 
-  map<B>(fn: (value: A) => B): Option<B>;
+  map<B>(fn: (value: Readonly<A>) => B): Option<B>;
 
   orElse(value: Option<A>): Option<A>;
 }

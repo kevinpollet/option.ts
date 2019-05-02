@@ -18,19 +18,19 @@ class SomeType<A> implements Option<A> {
     this.value = value;
   }
 
-  exists(fn: (value: A) => boolean): boolean {
+  exists(fn: (value: Readonly<A>) => boolean): boolean {
     return fn(this.value);
   }
 
-  filter(fn: (value: A) => boolean): Option<A> {
+  filter(fn: (value: Readonly<A>) => boolean): Option<A> {
     return fn(this.value) ? this : None;
   }
 
-  filterNot(fn: (value: A) => boolean): Option<A> {
+  filterNot(fn: (value: Readonly<A>) => boolean): Option<A> {
     return !fn(this.value) ? this : None;
   }
 
-  flatMap<B>(fn: (value: A) => Option<B>): Option<B> {
+  flatMap<B>(fn: (value: Readonly<A>) => Option<B>): Option<B> {
     return fn(this.value);
   }
 
@@ -54,7 +54,7 @@ class SomeType<A> implements Option<A> {
     return false;
   }
 
-  map<B>(fn: (value: A) => B): Option<B> {
+  map<B>(fn: (value: Readonly<A>) => B): Option<B> {
     const mappedValue = fn(this.value);
     return mappedValue ? new SomeType(mappedValue) : None;
   }

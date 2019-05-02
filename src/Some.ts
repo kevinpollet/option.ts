@@ -59,6 +59,10 @@ class SomeType<A> implements Option<A> {
     return mappedValue ? new SomeType(mappedValue as NonNullable<B>) : None;
   }
 
+  match<B>({ Some }: { Some: (value: A) => B }): B {
+    return Some(this.value);
+  }
+
   orElse(): Option<A> {
     return this;
   }

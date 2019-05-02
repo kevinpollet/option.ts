@@ -81,6 +81,17 @@ describe("None", () => {
     });
   });
 
+  describe("match", () => {
+    it("should call None function", () => {
+      const matcher = { None: jest.fn(), Some: jest.fn() };
+
+      option.match(matcher);
+
+      expect(matcher.None).toBeCalledTimes(1);
+      expect(matcher.Some).not.toBeCalled;
+    });
+  });
+
   describe("orElse", () => {
     it("should return the alternative", () => {
       const alternative = Some(12);

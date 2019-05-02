@@ -51,6 +51,10 @@ class NoneType<A> implements Option<A> {
     return unknownThis as Option<B>;
   }
 
+  match<B>({ None }: { None: () => B }): B {
+    return None();
+  }
+
   orElse(value: Option<A>): Option<A> {
     return value;
   }

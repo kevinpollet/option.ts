@@ -127,6 +127,18 @@ describe("Some", () => {
     });
   });
 
+  describe("match", () => {
+    it("should call Some function", () => {
+      const matcher = { None: jest.fn(), Some: jest.fn(() => value + 1) };
+      const result = option.match(matcher);
+
+      expect(result).toBe(value + 1);
+      expect(matcher.None).not.toBeCalled;
+      expect(matcher.Some).toBeCalledTimes(1);
+      expect(matcher.Some).toBeCalledWith(value);
+    });
+  });
+
   describe("orElse", () => {
     it("should return this option", () => {
       const alternative = Some(12);

@@ -26,5 +26,7 @@ export interface Option<A> {
 
   map<B>(fn: (value: Readonly<A>) => B): Option<NonNullable<B>>;
 
+  match<B>(matcher: { None: () => B; Some: (value: A) => B }): B;
+
   orElse(value: Option<A>): Option<A>;
 }

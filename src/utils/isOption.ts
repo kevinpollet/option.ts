@@ -10,10 +10,9 @@ import { NoneType } from "../NoneType";
 import { SomeType } from "../SomeType";
 
 /**
- * Type guard returning `true` if the given value is an {@link Option}, `false` otherwise.
+ * Returns `true` if the given value is an {@link Option}, otherwise `false`.
  *
- * @param value - The value to check
- * @returns `true` if the given value is an {@link Option}, `false` otherwise
+ * @param value - The value to test
  */
 export const isOption = <A>(value: unknown): value is Option<A> => {
   return value && (value instanceof NoneType || value instanceof SomeType);

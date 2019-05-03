@@ -11,17 +11,17 @@ import { Option } from "./Option";
 import { isOption } from "./utils/isOption";
 
 /**
- * Returns an {@link OptionPromise} instance containing the given promise resolving to an {@link Option}.
+ * Returns an {@link OptionPromise} instance containing the given asynchronous {@link Option}.
  *
- * @param value - The promise resolving to an {@link Option}
+ * @param value - The asynchronous {@link Option}
  */
 export function fromPromise<A>(value: Promise<Option<A>>): OptionPromise<A>;
 
 /**
- * Returns an {@link OptionPromise} instance containing the given promise which value is converted as an
+ * Returns an {@link OptionPromise} instance containing the given promise which optional value is converted as an
  * {@link Option}.
  *
- * @param value - The promise
+ * @param value - The promise resolving to an optional value
  */
 export function fromPromise<A>(
   value: Promise<A>

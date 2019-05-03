@@ -13,7 +13,7 @@
 export interface Option<A> {
   /**
    * Returns `true` if this option is non-empty and the predicate function
-   * applied to this option's value returns `true`, `false` otherwise.
+   * applied to this option's value returns `true`, otherwise `false`.
    *
    * @param fn - The predicate function
    */
@@ -23,7 +23,7 @@ export interface Option<A> {
    * Returns this option if it is non-empty and the predicate function applied
    * to this option's value returns `true`, otherwise {@link None}.
    *
-   * @param fn - The predicate function.
+   * @param fn - The predicate function
    */
   filter(fn: (value: Readonly<A>) => boolean): Option<A>;
 

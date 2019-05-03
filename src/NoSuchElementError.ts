@@ -6,8 +6,7 @@
  */
 
 /**
- * Thrown by {@link Option.get} method to indicate that this option is empty,
- * a.k.a. is {@link None}.
+ * Thrown by {@link Option.get} method to indicate that this option is empty, {@link None}.
  */
 export class NoSuchElementError extends Error {
   constructor() {

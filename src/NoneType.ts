@@ -8,6 +8,9 @@
 import { Option } from "./Option";
 import { NoSuchElementError } from "./NoSuchElementError";
 
+/**
+ * Represents an empty {@link Option}.
+ */
 export class NoneType<A> implements Option<A> {
   exists(): boolean {
     return false;
@@ -59,7 +62,7 @@ export class NoneType<A> implements Option<A> {
     return None();
   }
 
-  orElse(value: Option<A>): Option<A> {
-    return value;
+  orElse(option: Option<A>): Option<A> {
+    return option;
   }
 }

@@ -7,6 +7,9 @@
 
 import { Option } from "./Option";
 
+/**
+ * Represents an asynchronous option.
+ */
 export class OptionPromise<A> {
   private readonly value: Promise<Option<A>>;
 

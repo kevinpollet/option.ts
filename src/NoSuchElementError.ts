@@ -5,6 +5,10 @@
  * found in the LICENSE.md file.
  */
 
+/**
+ * Thrown by {@link Option.get} method to indicate that this option is empty,
+ * a.k.a. is {@link None}.
+ */
 export class NoSuchElementError extends Error {
   constructor() {
     super("None.get");

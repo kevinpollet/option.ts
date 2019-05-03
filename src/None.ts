@@ -7,4 +7,7 @@
 
 import { NoneType } from "./NoneType";
 
+/**
+ * The empty option singleton.
+ */
 export const None = new NoneType<never>();

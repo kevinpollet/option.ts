@@ -9,5 +9,11 @@ import { Option } from "./Option";
 import { Some } from "./Some";
 import { None } from "./None";
 
+/**
+ * Returns an {@link Option} corresponding to the given value.
+ *
+ * @param value - The value to wrap as an {@link Option}
+ * @returns {@link None} if value is not defined (`undefined` or `null`), {@link Some} otherwise
+ */
 export const from = <A>(value: A): Option<NonNullable<A>> =>
   value ? Some(value as NonNullable<A>) : None;

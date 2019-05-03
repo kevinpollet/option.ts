@@ -8,6 +8,9 @@
 import { Option } from "./Option";
 import { None } from "./None";
 
+/**
+ * Represents a non empty option.
+ */
 export class SomeType<A> implements Option<A> {
   private readonly value: A;
 

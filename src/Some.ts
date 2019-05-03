@@ -7,5 +7,10 @@
 
 import { SomeType } from "./SomeType";
 
+/**
+ * Returns an instance of {@link SomeType} containing the given value.
+ *
+ * @param value - The option value. This value must be defined, i.e. not `null` or `undefined`
+ */
 export const Some = <A>(value: NonNullable<A>): SomeType<NonNullable<A>> =>
   new SomeType(value);

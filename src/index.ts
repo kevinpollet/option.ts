@@ -11,3 +11,4 @@ export { None } from "./None";
 export { Option } from "./Option";
 export { OptionPromise } from "./OptionPromise";
 export { Some } from "./Some";
+export { NoSuchElementError } from "./NoSuchElementError";

@@ -33,6 +33,10 @@ const name: string = from(user)
   .getOrElse("anonymous");
 ```
 
+## Contributing
+
+See [contributing guidelines](./CONTRIBUTING.md).
+
 ## License
 
 [MIT](./LICENSE.md)

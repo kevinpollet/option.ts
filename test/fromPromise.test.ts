@@ -15,14 +15,14 @@ describe("fromPromise", () => {
     const promise = Promise.resolve(null);
     const optionPromise = fromPromise(promise);
 
-    expect(await optionPromise.asPromise()).toBe(None);
+    expect(await optionPromise.toPromise()).toBe(None);
   });
 
   it("should return an OptionPromise resolving to None if value is null", async () => {
     const promise = Promise.resolve(undefined);
     const optionPromise = fromPromise(promise);
 
-    expect(await optionPromise.asPromise()).toBe(None);
+    expect(await optionPromise.toPromise()).toBe(None);
   });
 
   it("should return an OptionPromise resolving to Some if value is not undefined or null", async () => {
@@ -30,7 +30,7 @@ describe("fromPromise", () => {
     const promise = Promise.resolve(value);
     const optionPromise = fromPromise(promise);
 
-    expect(await optionPromise.asPromise()).toEqual(Some(value));
+    expect(await optionPromise.toPromise()).toEqual(Some(value));
   });
 
   it("should return an OptionPromise resolving to given promise", async () => {
@@ -38,6 +38,6 @@ describe("fromPromise", () => {
     const promise = Promise.resolve(option);
     const optionPromise = fromPromise(promise);
 
-    expect(await optionPromise.asPromise()).toBe(option);
+    expect(await optionPromise.toPromise()).toBe(option);
   });
 });

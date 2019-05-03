@@ -14,9 +14,9 @@ describe("Some", () => {
   const promise = Promise.resolve(option);
   const optionPromise: OptionPromise<number> = new OptionPromise(promise);
 
-  describe("asPromise", () => {
+  describe("toPromise", () => {
     it("should return the underlying promise", () =>
-      expect(optionPromise.asPromise()).toBe(promise));
+      expect(optionPromise.toPromise()).toBe(promise));
   });
 
   describe("filter", () => {

@@ -40,7 +40,7 @@ export class OptionPromise<A> {
     return new OptionPromise(mappedValue);
   }
 
-  asPromise(): Promise<Option<A>> {
+  toPromise(): Promise<Option<A>> {
     return this.value;
   }
 }

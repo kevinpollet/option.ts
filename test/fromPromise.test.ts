@@ -14,26 +14,23 @@ describe("fromPromise", () => {
   it("should return an OptionPromise resolving to None if value is undefined", async () => {
     const promise = Promise.resolve(null);
     const optionPromise = fromPromise(promise);
-    const option = await optionPromise.asPromise();
 
-    expect(option).toBe(None);
+    expect(await optionPromise.asPromise()).toBe(None);
   });
 
   it("should return an OptionPromise resolving to None if value is null", async () => {
     const promise = Promise.resolve(undefined);
     const optionPromise = fromPromise(promise);
-    const option = await optionPromise.asPromise();
 
-    expect(option).toBe(None);
+    expect(await optionPromise.asPromise()).toBe(None);
   });
 
   it("should return an OptionPromise resolving to Some if value is not undefined or null", async () => {
     const value = 12;
     const promise = Promise.resolve(value);
     const optionPromise = fromPromise(promise);
-    const option = await optionPromise.asPromise();
 
-    expect(option).toEqual(Some(value));
+    expect(await optionPromise.asPromise()).toEqual(Some(value));
   });
 
   it("should return an OptionPromise resolving to given promise", async () => {

@@ -25,8 +25,8 @@ describe("Some", () => {
 
       await optionPromise.filter(fn);
 
-      expect(fn).toBeCalledTimes(1);
-      expect(fn).toBeCalledWith(value);
+      expect(fn).toHaveBeenCalledTimes(1);
+      expect(fn).toHaveBeenCalledWith(value);
     });
   });
 
@@ -36,8 +36,8 @@ describe("Some", () => {
 
       await optionPromise.filterNot(fn);
 
-      expect(fn).toBeCalledTimes(1);
-      expect(fn).toBeCalledWith(value);
+      expect(fn).toHaveBeenCalledTimes(1);
+      expect(fn).toHaveBeenCalledWith(value);
     });
   });
 
@@ -63,8 +63,8 @@ describe("Some", () => {
 
       await optionPromise.map(fn);
 
-      expect(fn).toBeCalledTimes(1);
-      expect(fn).toBeCalledWith(value);
+      expect(fn).toHaveBeenCalledTimes(1);
+      expect(fn).toHaveBeenCalledWith(value);
     });
   });
 });

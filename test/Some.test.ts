@@ -26,16 +26,16 @@ describe("Some", () => {
       const fn = jest.fn(v => v === value);
 
       expect(option.exists(fn)).toBeTruthy();
-      expect(fn).toBeCalledTimes(1);
-      expect(fn).toBeCalledWith(value);
+      expect(fn).toHaveBeenCalledTimes(1);
+      expect(fn).toHaveBeenCalledWith(value);
     });
 
     it("should return false", () => {
       const fn = jest.fn(v => v !== value);
 
       expect(option.exists(fn)).toBeFalsy();
-      expect(fn).toBeCalledTimes(1);
-      expect(fn).toBeCalledWith(value);
+      expect(fn).toHaveBeenCalledTimes(1);
+      expect(fn).toHaveBeenCalledWith(value);
     });
   });
 
@@ -44,16 +44,16 @@ describe("Some", () => {
       const fn = jest.fn(v => v === value);
 
       expect(option.filter(fn)).toBe(option);
-      expect(fn).toBeCalledTimes(1);
-      expect(fn).toBeCalledWith(value);
+      expect(fn).toHaveBeenCalledTimes(1);
+      expect(fn).toHaveBeenCalledWith(value);
     });
 
     it("should return None", () => {
       const fn = jest.fn(v => v !== value);
 
       expect(option.filter(fn)).toBe(None);
-      expect(fn).toBeCalledTimes(1);
-      expect(fn).toBeCalledWith(value);
+      expect(fn).toHaveBeenCalledTimes(1);
+      expect(fn).toHaveBeenCalledWith(value);
     });
   });
 
@@ -62,16 +62,16 @@ describe("Some", () => {
       const fn = jest.fn(v => v !== value);
 
       expect(option.filterNot(fn)).toBe(option);
-      expect(fn).toBeCalledTimes(1);
-      expect(fn).toBeCalledWith(value);
+      expect(fn).toHaveBeenCalledTimes(1);
+      expect(fn).toHaveBeenCalledWith(value);
     });
 
     it("should return None", () => {
       const fn = jest.fn(v => v === value);
 
       expect(option.filterNot(fn)).toBe(None);
-      expect(fn).toBeCalledTimes(1);
-      expect(fn).toBeCalledWith(value);
+      expect(fn).toHaveBeenCalledTimes(1);
+      expect(fn).toHaveBeenCalledWith(value);
     });
   });
 
@@ -81,8 +81,8 @@ describe("Some", () => {
       const fn = jest.fn(() => newOption);
 
       expect(option.flatMap(fn)).toBe(newOption);
-      expect(fn).toBeCalledTimes(1);
-      expect(fn).toBeCalledWith(value);
+      expect(fn).toHaveBeenCalledTimes(1);
+      expect(fn).toHaveBeenCalledWith(value);
     });
   });
 
@@ -106,7 +106,7 @@ describe("Some", () => {
 
       expect(option).toBe(option);
       expect(option).toEqual(Some({ value: value + 1 }));
-      expect(fn).toBeCalledTimes(1);
+      expect(fn).toHaveBeenCalledTimes(1);
     });
   });
 
@@ -133,24 +133,24 @@ describe("Some", () => {
       const fn = jest.fn(() => null);
 
       expect(option.map(fn)).toBe(None);
-      expect(fn).toBeCalledTimes(1);
-      expect(fn).toBeCalledWith(value);
+      expect(fn).toHaveBeenCalledTimes(1);
+      expect(fn).toHaveBeenCalledWith(value);
     });
 
     it("should return None if mapped value is undefined", () => {
       const fn = jest.fn(() => undefined);
 
       expect(option.map(fn)).toBe(None);
-      expect(fn).toBeCalledTimes(1);
-      expect(fn).toBeCalledWith(value);
+      expect(fn).toHaveBeenCalledTimes(1);
+      expect(fn).toHaveBeenCalledWith(value);
     });
 
     it("should return a defined option with mapped value", () => {
       const fn = jest.fn(v => v.toString());
 
       expect(option.map(fn)).toEqual(Some(value.toString()));
-      expect(fn).toBeCalledTimes(1);
-      expect(fn).toBeCalledWith(value);
+      expect(fn).toHaveBeenCalledTimes(1);
+      expect(fn).toHaveBeenCalledWith(value);
     });
   });
 
@@ -161,8 +161,8 @@ describe("Some", () => {
 
       expect(result).toBe(value + 1);
       expect(matcher.None).not.toBeCalled;
-      expect(matcher.Some).toBeCalledTimes(1);
-      expect(matcher.Some).toBeCalledWith(value);
+      expect(matcher.Some).toHaveBeenCalledTimes(1);
+      expect(matcher.Some).toHaveBeenCalledWith(value);
     });
   });
 

@@ -7,12 +7,12 @@
 
 /**
  * Represents an optional value. Instances of {@link Option} are either
- * an instance of {@link SomeType} to represent a non empty option or the
+ * an instance of {@link SomeType} to represent a non-empty option or the
  * object {@link None}.to represent an empty option.
  */
 export interface Option<A> {
   /**
-   * Returns `true` if this option is non empty and the predicate function
+   * Returns `true` if this option is non-empty and the predicate function
    * applied to this option's value returns `true`, `false` otherwise.
    *
    * @param fn - The predicate function
@@ -20,7 +20,7 @@ export interface Option<A> {
   exists(fn: (value: Readonly<A>) => boolean): boolean;
 
   /**
-   * Returns this option if it is non empty and the predicate function applied
+   * Returns this option if it is non-empty and the predicate function applied
    * to this option's value returns `true`, otherwise {@link None}.
    *
    * @param fn - The predicate function.
@@ -28,7 +28,7 @@ export interface Option<A> {
   filter(fn: (value: Readonly<A>) => boolean): Option<A>;
 
   /**
-   * Returns this option if it is non empty and the predicate function applied
+   * Returns this option if it is non-empty and the predicate function applied
    * to this option's value returns `false`, otherwise {@link None}.
    *
    * @param fn - The predicate function
@@ -36,23 +36,23 @@ export interface Option<A> {
   filterNot(fn: (value: Readonly<A>) => boolean): Option<A>;
 
   /**
-   * Returns the result of applying the given function if this option is non empty.
+   * Returns the result of applying the given function if this option is non-empty.
    *
    * @param fn - The function to apply
    */
   flatMap<B>(fn: (value: Readonly<A>) => Option<B>): Option<B>;
 
   /**
-   * Returns the result of applying the given function if this option is non empty,
+   * Returns the result of applying the given function if this option is non-empty,
    * otherwise returns the given default value.
    *
    * @param defaultValue - The default value to return if empty
-   * @param fn - The function to apply if non empty
+   * @param fn - The function to apply if non-empty
    */
   fold<B>(defaultValue: B, fn: (value: A) => B): B;
 
   /**
-   * Apply the given side effect function if the option is non empty.
+   * Apply the given side effect function if the option is non-empty.
    *
    * @param fn - The side effect function to apply
    */
@@ -64,7 +64,7 @@ export interface Option<A> {
   get(): A;
 
   /**
-   * Returns the option value if the option is non empty, otherwise return the given value.
+   * Returns the option value if the option is non-empty, otherwise return the given value.
    *
    * @param value - The value to return if the option is empty
    */
@@ -81,10 +81,10 @@ export interface Option<A> {
   isEmpty(): boolean;
 
   /**
-   * Returns the result of applying the given function if this option is non empty,
+   * Returns the result of applying the given function if this option is non-empty,
    * otherwise {@link None}.
    *
-   * @param fn - The function to apply if non empty
+   * @param fn - The function to apply if non-empty
    */
   map<B>(fn: (value: Readonly<A>) => B): Option<NonNullable<B>>;
 
@@ -97,7 +97,7 @@ export interface Option<A> {
   match<B>(matcher: { None: () => B; Some: (value: A) => B }): B;
 
   /**
-   * Returns this option if it is non empty, otherwise return the given option.
+   * Returns this option if it is non-empty, otherwise return the given option.
    *
    * @param option - The option to return if this option is empty.
    */

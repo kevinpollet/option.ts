@@ -34,6 +34,10 @@ export class SomeType<A> implements Option<A> {
     return fn(this.value);
   }
 
+  fold<B>(_: B, fn: (value: A) => B): B {
+    return fn(this.value);
+  }
+
   forEach(fn: (value: A) => void): void {
     return fn(this.value);
   }

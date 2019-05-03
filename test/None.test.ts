@@ -44,6 +44,16 @@ describe("None", () => {
     });
   });
 
+  describe("fold", () => {
+    it("should return the default value", () => {
+      const defaultValue = 12;
+
+      expect(option.fold(defaultValue, fn)).toBe(defaultValue);
+      expect(option).toBe(None);
+      expect(fn).not.toBeCalled;
+    });
+  });
+
   describe("forEach", () => {
     it("should return None", () => {
       option.forEach(fn);

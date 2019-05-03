@@ -86,6 +86,17 @@ describe("Some", () => {
     });
   });
 
+  describe("fold", () => {
+    it("should apply the given function", () => {
+      const defaultValue = 12;
+      const fn = jest.fn(val => val.toString());
+
+      expect(option.fold(defaultValue, fn)).toBe(value.toString());
+      expect(fn).toHaveBeenCalledTimes(1);
+      expect(fn).toHaveBeenCalledWith(value);
+    });
+  });
+
   describe("forEach", () => {
     it("should apply the given side effect function and return this option", () => {
       const option: Option<{ value: number }> = Some({ value });

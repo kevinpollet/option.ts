@@ -14,6 +14,8 @@ export interface Option<A> {
 
   flatMap<B>(fn: (value: Readonly<A>) => Option<B>): Option<B>;
 
+  fold<B>(defaultValue: B, fn: (value: A) => B): B;
+
   forEach(fn: (value: A) => void): void;
 
   get(): A;

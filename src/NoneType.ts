@@ -26,6 +26,10 @@ export class NoneType<A> implements Option<A> {
     return unknownThis as Option<B>;
   }
 
+  fold<B>(defaultValue: B): B {
+    return defaultValue;
+  }
+
   forEach(): void {
     return;
   }

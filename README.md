@@ -2,19 +2,6 @@
 
 ✨Option monad for TypeScript ✨
 
-## Type safety
-
-You're strongly encouraged to add the `strictNullChecks` flag to your TypeScript compiler options. Adding this flag will raise compile time errors in the following cases:
-
-```ts
-Some(null); // Error
-Some(undefined); // Error
-```
-
-From TypeScript documentation:
-
-> In strict null checking mode, the null and undefined values are not in the domain of every type and are only assignable to themselves and any (the one exception being that undefined is also assignable to void).
-
 ## Install
 
 ```shell
@@ -26,11 +13,48 @@ $ npm install --save @kevinpollet/option.ts
 ```ts
 import { from } from "@kevinpollet/option.ts";
 
-const user: User | undefined = findById(1);
+const user: User | undefined = findById(42);
 
 const name: string = from(user)
   .map(value => value.getName())
-  .getOrElse("anonymous");
+  .getOrElse("No Name");
+```
+
+💡 As you've already noticed `Option` monad does not play well with `Promise` from `ES6`. If you look at the following coding you will see that you need to write a lot of boilerplate code.
+
+```ts
+import { from } from "@kevinpollet/option.ts";
+
+const user: Promise<Option<User>> = findById(42);
+
+const name: Promise<Option<string>> = from(user).then(promiseValue =>
+  promiseValue.map(value => value.getName())
+);
+```
+
+To reduce this boilerplate code `option.ts` supports asynchronous option:
+
+```ts
+import { fromPromise } from "@kevinpollet/option.ts";
+
+const user: Promise<Option<User>> = findById(42);
+
+const name: OptionPromise<string> = fromPromise(user).map(value =>
+  value.getName()
+);
+```
+
+## Type safety
+
+You're strongly encouraged to add the `strictNullChecks` flag to your TypeScript compiler options. From TypeScript documentation:
+
+> In strict null checking mode, the null and undefined values are not in the domain of every type and are only assignable to themselves and any (the one exception being that undefined is also assignable to void).
+
+With this flag the following code will not compile. Without `strictNullChecks` a `TypeError` will be thrown at runtime:
+
+```ts
+Some(null); // Compilation error
+Some(undefined); // Compilation error
 ```
 
 ## Contributing

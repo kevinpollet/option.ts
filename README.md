@@ -1,6 +1,6 @@
 # option.ts &middot; [![Build Status](https://travis-ci.com/kevinpollet/option.ts.svg?branch=master)](https://travis-ci.com/kevinpollet/option.ts) ![TypeScript Version](https://img.shields.io/badge/TypeScript-3.x-blue.svg)
 
-✨Option monad for TypeScript ✨
+> Option monad for TypeScript
 
 ## Install
 

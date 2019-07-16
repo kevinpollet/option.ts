@@ -1,6 +1,6 @@
 {
   "name": "@kevinpollet/option.ts",
-  "version": "1.0.0-beta.0",
+  "version": "1.0.0-beta.1",
   "description": "Option monad for TypeScript",
   "author": "kevinpollet <pollet.kevin@gmail.com>",
   "license": "MIT",

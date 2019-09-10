@@ -160,7 +160,7 @@ describe("Some", () => {
       const result = option.match(matcher);
 
       expect(result).toBe(value + 1);
-      expect(matcher.None).not.toBeCalled;
+      expect(matcher.None).not.toBeCalled();
       expect(matcher.Some).toHaveBeenCalledTimes(1);
       expect(matcher.Some).toHaveBeenCalledWith(value);
     });

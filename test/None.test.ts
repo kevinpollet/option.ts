@@ -19,28 +19,28 @@ describe("None", () => {
   describe("exists", () => {
     it("should return false", () => {
       expect(option.exists(fn)).toBeFalsy();
-      expect(fn).not.toBeCalled;
+      expect(fn).not.toBeCalled();
     });
   });
 
   describe("filter", () => {
     it("should return None", () => {
       expect(option.filter(fn)).toBe(None);
-      expect(fn).not.toBeCalled;
+      expect(fn).not.toBeCalled();
     });
   });
 
   describe("filterNot", () => {
     it("should return None", () => {
       expect(option.filterNot(fn)).toBe(None);
-      expect(fn).not.toBeCalled;
+      expect(fn).not.toBeCalled();
     });
   });
 
   describe("flatMap", () => {
     it("should return None", () => {
       expect(option.flatMap(fn)).toBe(None);
-      expect(fn).not.toBeCalled;
+      expect(fn).not.toBeCalled();
     });
   });
 
@@ -50,7 +50,7 @@ describe("None", () => {
 
       expect(option.fold(defaultValue, fn)).toBe(defaultValue);
       expect(option).toBe(None);
-      expect(fn).not.toBeCalled;
+      expect(fn).not.toBeCalled();
     });
   });
 
@@ -59,7 +59,7 @@ describe("None", () => {
       option.forEach(fn);
 
       expect(option).toBe(None);
-      expect(fn).not.toBeCalled;
+      expect(fn).not.toBeCalled();
     });
   });
 
@@ -87,7 +87,7 @@ describe("None", () => {
   describe("map", () => {
     it("should return None", () => {
       expect(option.map(fn)).toBe(None);
-      expect(fn).not.toBeCalled;
+      expect(fn).not.toBeCalled();
     });
   });
 
@@ -98,7 +98,7 @@ describe("None", () => {
       option.match(matcher);
 
       expect(matcher.None).toBeCalledTimes(1);
-      expect(matcher.Some).not.toBeCalled;
+      expect(matcher.Some).not.toBeCalled();
     });
   });
 

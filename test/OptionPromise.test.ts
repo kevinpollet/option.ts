@@ -23,7 +23,7 @@ describe("Some", () => {
     it("should call the filter function on the underlying option", async () => {
       const fn = jest.fn(v => v === value);
 
-      await optionPromise.filter(fn);
+      await optionPromise.filter(fn).toPromise();
 
       expect(fn).toHaveBeenCalledTimes(1);
       expect(fn).toHaveBeenCalledWith(value);
@@ -34,7 +34,7 @@ describe("Some", () => {
     it("should call the filterNot function on the underlying option", async () => {
       const fn = jest.fn(v => v === value);
 
-      await optionPromise.filterNot(fn);
+      await optionPromise.filterNot(fn).toPromise();
 
       expect(fn).toHaveBeenCalledTimes(1);
       expect(fn).toHaveBeenCalledWith(value);
@@ -61,7 +61,7 @@ describe("Some", () => {
     it("should call the map function on the underlying option", async () => {
       const fn = jest.fn(v => v.toString());
 
-      await optionPromise.map(fn);
+      await optionPromise.map(fn).toPromise();
 
       expect(fn).toHaveBeenCalledTimes(1);
       expect(fn).toHaveBeenCalledWith(value);

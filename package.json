@@ -25,7 +25,8 @@
     "format": "prettier --write --ignore-path .gitignore '**/*.{ts,json,md,yml}'",
     "format:check": "prettier --check --ignore-path .gitignore '**/*.{ts,json,md,yml}'",
     "lint": "eslint --ignore-path .gitignore '**/*.ts'",
-    "preversion": "run-p lint build test",
+    "preversion": "run-p lint build",
+    "prepublishOnly": "run-p build",
     "release": "np",
     "test": "jest test"
   },

@@ -13,31 +13,31 @@ import { Option } from "../src/Option";
 describe("fromPromise", () => {
   it("should return an PromiseOption resolving to None if value is undefined", async () => {
     const promise = Promise.resolve(null);
-    const PromiseOption = fromPromise(promise);
+    const promiseOption = fromPromise(promise);
 
-    expect(await PromiseOption.toPromise()).toBe(None);
+    expect(await promiseOption.toPromise()).toBe(None);
   });
 
   it("should return an PromiseOption resolving to None if value is null", async () => {
     const promise = Promise.resolve(undefined);
-    const PromiseOption = fromPromise(promise);
+    const promiseOption = fromPromise(promise);
 
-    expect(await PromiseOption.toPromise()).toBe(None);
+    expect(await promiseOption.toPromise()).toBe(None);
   });
 
   it("should return an PromiseOption resolving to Some if value is not undefined or null", async () => {
     const value = 12;
     const promise = Promise.resolve(value);
-    const PromiseOption = fromPromise(promise);
+    const promiseOption = fromPromise(promise);
 
-    expect(await PromiseOption.toPromise()).toEqual(Some(value));
+    expect(await promiseOption.toPromise()).toEqual(Some(value));
   });
 
   it("should return an PromiseOption resolving to given promise", async () => {
     const option: Option<number> = Some(12);
     const promise = Promise.resolve(option);
-    const PromiseOption = fromPromise(promise);
+    const promiseOption = fromPromise(promise);
 
-    expect(await PromiseOption.toPromise()).toBe(option);
+    expect(await promiseOption.toPromise()).toBe(option);
   });
 });

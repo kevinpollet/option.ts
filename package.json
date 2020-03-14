@@ -30,7 +30,7 @@
     "pretest": "run-s lint:test",
     "preversion": "run-p build test",
     "release": "np",
-    "test": "jest --coverage --collectCoverageFrom='src/**/*.ts' test"
+    "test": "jest test"
   },
   "devDependencies": {
     "@kevinpollet/tsconfig": "0.1.0",

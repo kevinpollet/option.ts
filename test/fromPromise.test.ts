@@ -11,33 +11,33 @@ import { Some } from "../src/Some";
 import { Option } from "../src/Option";
 
 describe("fromPromise", () => {
-  it("should return an OptionPromise resolving to None if value is undefined", async () => {
+  it("should return an PromiseOption resolving to None if value is undefined", async () => {
     const promise = Promise.resolve(null);
-    const optionPromise = fromPromise(promise);
+    const PromiseOption = fromPromise(promise);
 
-    expect(await optionPromise.toPromise()).toBe(None);
+    expect(await PromiseOption.toPromise()).toBe(None);
   });
 
-  it("should return an OptionPromise resolving to None if value is null", async () => {
+  it("should return an PromiseOption resolving to None if value is null", async () => {
     const promise = Promise.resolve(undefined);
-    const optionPromise = fromPromise(promise);
+    const PromiseOption = fromPromise(promise);
 
-    expect(await optionPromise.toPromise()).toBe(None);
+    expect(await PromiseOption.toPromise()).toBe(None);
   });
 
-  it("should return an OptionPromise resolving to Some if value is not undefined or null", async () => {
+  it("should return an PromiseOption resolving to Some if value is not undefined or null", async () => {
     const value = 12;
     const promise = Promise.resolve(value);
-    const optionPromise = fromPromise(promise);
+    const PromiseOption = fromPromise(promise);
 
-    expect(await optionPromise.toPromise()).toEqual(Some(value));
+    expect(await PromiseOption.toPromise()).toEqual(Some(value));
   });
 
-  it("should return an OptionPromise resolving to given promise", async () => {
+  it("should return an PromiseOption resolving to given promise", async () => {
     const option: Option<number> = Some(12);
     const promise = Promise.resolve(option);
-    const optionPromise = fromPromise(promise);
+    const PromiseOption = fromPromise(promise);
 
-    expect(await optionPromise.toPromise()).toBe(option);
+    expect(await PromiseOption.toPromise()).toBe(option);
   });
 });

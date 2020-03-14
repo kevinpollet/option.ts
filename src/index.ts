@@ -9,6 +9,6 @@ export { from } from "./from";
 export { fromPromise } from "./fromPromise";
 export { None } from "./None";
 export { Option } from "./Option";
-export { OptionPromise } from "./OptionPromise";
+export { PromiseOption } from "./PromiseOption";
 export { Some } from "./Some";
 export { NoSuchElementError } from "./NoSuchElementError";

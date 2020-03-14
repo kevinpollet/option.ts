@@ -5,29 +5,29 @@
  * found in the LICENSE.md file.
  */
 
-import { OptionPromise } from "./OptionPromise";
+import { PromiseOption } from "./PromiseOption";
 import { from } from "./from";
 import { Option } from "./Option";
 import { isOption } from "./utils/isOption";
 
 /**
- * Returns an {@link OptionPromise} instance containing the given asynchronous {@link Option}.
+ * Returns an {@link PromiseOption} instance containing the given asynchronous {@link Option}.
  *
  * @param value - The asynchronous {@link Option}
  */
-export function fromPromise<A>(value: Promise<Option<A>>): OptionPromise<A>;
+export function fromPromise<A>(value: Promise<Option<A>>): PromiseOption<A>;
 
 /**
- * Returns an {@link OptionPromise} instance containing the given promise which optional value is converted as an
+ * Returns an {@link PromiseOption} instance containing the given promise which optional value is converted as an
  * {@link Option}.
  *
  * @param value - The promise resolving to an optional value
  */
 export function fromPromise<A>(
   value: Promise<A>
-): OptionPromise<NonNullable<A>>;
+): PromiseOption<NonNullable<A>>;
 
-export function fromPromise(value: Promise<unknown>): OptionPromise<unknown> {
+export function fromPromise(value: Promise<unknown>): PromiseOption<unknown> {
   const promise = value.then(v => (isOption(v) ? v : from(v)));
-  return new OptionPromise(promise);
+  return new PromiseOption(promise);
 }

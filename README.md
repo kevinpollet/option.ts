@@ -51,7 +51,7 @@ import { fromPromise } from "@kevinpollet/option.ts";
 
 const user: Promise<Option<User>> = findById(42);
 
-const name: OptionPromise<string> = fromPromise(user).map(value =>
+const name: PromiseOption<string> = fromPromise(user).map(value =>
   value.getName()
 );
 ```

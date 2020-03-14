@@ -10,7 +10,7 @@ import { Option } from "./Option";
 /**
  * Represents an asynchronous option.
  */
-export class OptionPromise<A> {
+export class PromiseOption<A> {
   private readonly value: Promise<Option<A>>;
 
   constructor(value: Promise<Option<A>>) {
@@ -18,25 +18,25 @@ export class OptionPromise<A> {
   }
 
   /**
-   * Returns an {@link OptionPromise} instance containing the result of applying the
+   * Returns an {@link PromiseOption} instance containing the result of applying the
    * {@link Option.filter} method to the underlying asynchronous option.
    *
    * @param fn - The predicate function
    */
-  filter(fn: (value: Readonly<A>) => boolean): OptionPromise<A> {
+  filter(fn: (value: Readonly<A>) => boolean): PromiseOption<A> {
     const filteredValue = this.value.then(option => option.filter(fn));
-    return new OptionPromise(filteredValue);
+    return new PromiseOption(filteredValue);
   }
 
   /**
-   * Returns an {@link OptionPromise} instance containing the result of applying the
+   * Returns an {@link PromiseOption} instance containing the result of applying the
    * {@link Option.filterNot} method to the underlying asynchronous option.
    *
    * @param fn - The predicate function
    */
-  filterNot(fn: (value: Readonly<A>) => boolean): OptionPromise<A> {
+  filterNot(fn: (value: Readonly<A>) => boolean): PromiseOption<A> {
     const filteredValue = this.value.then(option => option.filterNot(fn));
-    return new OptionPromise(filteredValue);
+    return new PromiseOption(filteredValue);
   }
 
   /**
@@ -56,14 +56,14 @@ export class OptionPromise<A> {
   }
 
   /**
-   * Returns an {@link OptionPromise} instance containing the result of applying the given
+   * Returns an {@link PromiseOption} instance containing the result of applying the given
    * function to the underlying asynchronous option if it is non-empty.
    *
    * @param fn - The function to apply
    */
-  map<B>(fn: (value: A) => B): OptionPromise<NonNullable<B>> {
+  map<B>(fn: (value: A) => B): PromiseOption<NonNullable<B>> {
     const mappedValue = this.value.then(option => option.map(fn));
-    return new OptionPromise(mappedValue);
+    return new PromiseOption(mappedValue);
   }
 
   /**

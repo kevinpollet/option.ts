@@ -6,24 +6,24 @@
  */
 
 import { Some } from "../src/Some";
-import { OptionPromise } from "../src/OptionPromise";
+import { PromiseOption } from "../src/PromiseOption";
 
 describe("Some", () => {
   const value = 12;
   const option = Some(value);
   const promise = Promise.resolve(option);
-  const optionPromise: OptionPromise<number> = new OptionPromise(promise);
+  const promiseOption: PromiseOption<number> = new PromiseOption(promise);
 
   describe("toPromise", () => {
     it("should return the underlying promise", () =>
-      expect(optionPromise.toPromise()).toBe(promise));
+      expect(promiseOption.toPromise()).toBe(promise));
   });
 
   describe("filter", () => {
     it("should call the filter function on the underlying option", async () => {
       const fn = jest.fn(v => v === value);
 
-      await optionPromise.filter(fn).toPromise();
+      await promiseOption.filter(fn).toPromise();
 
       expect(fn).toHaveBeenCalledTimes(1);
       expect(fn).toHaveBeenCalledWith(value);
@@ -34,7 +34,7 @@ describe("Some", () => {
     it("should call the filterNot function on the underlying option", async () => {
       const fn = jest.fn(v => v === value);
 
-      await optionPromise.filterNot(fn).toPromise();
+      await promiseOption.filterNot(fn).toPromise();
 
       expect(fn).toHaveBeenCalledTimes(1);
       expect(fn).toHaveBeenCalledWith(value);
@@ -43,7 +43,7 @@ describe("Some", () => {
 
   describe("get", () => {
     it("should call the get function on the underlying option", async () => {
-      const result = await optionPromise.get();
+      const result = await promiseOption.get();
 
       expect(result).toBe(value);
     });
@@ -51,7 +51,7 @@ describe("Some", () => {
 
   describe("getOrElse", () => {
     it("should call the getOrElse function on the underlying option", async () => {
-      const result = await optionPromise.getOrElse(23);
+      const result = await promiseOption.getOrElse(23);
 
       expect(result).toBe(value);
     });
@@ -61,7 +61,7 @@ describe("Some", () => {
     it("should call the map function on the underlying option", async () => {
       const fn = jest.fn(v => v.toString());
 
-      await optionPromise.map(fn).toPromise();
+      await promiseOption.map(fn).toPromise();
 
       expect(fn).toHaveBeenCalledTimes(1);
       expect(fn).toHaveBeenCalledWith(value);

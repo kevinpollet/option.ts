@@ -1,12 +1,12 @@
 {
   "name": "@kevinpollet/option.ts",
-  "version": "1.0.0-beta.1",
   "description": "Option monad for TypeScript",
-  "author": "kevinpollet <pollet.kevin@gmail.com>",
+  "version": "1.0.0-beta.1",
   "license": "MIT",
-  "homepage": "https://github.com/kevinpollet/optional.ts#readme",
+  "author": "kevinpollet <pollet.kevin@gmail.com>",
+  "homepage": "https://github.com/kevinpollet/option.ts#readme",
   "repository": "github:kevinpollet/option.ts",
-  "bugs": "https://github.com/kevinpollet/optional.ts/issues",
+  "bugs": "https://github.com/kevinpollet/option.ts/issues",
   "keywords": [
     "typescript",
     "monad",
@@ -21,14 +21,11 @@
     "access": "public"
   },
   "scripts": {
-    "build": "tsc -p tsconfig.build.json",
-    "clean": "rimraf coverage lib",
-    "format": "prettier --write '**/*.{ts,json,md,yml}' '!{lib,coverage}/**/*'",
-    "lint:src": "eslint 'src/**/*.ts'",
-    "lint:test": "eslint 'test/**/*.ts'",
-    "prebuild": "run-p clean lint:src",
-    "pretest": "run-s lint:test",
-    "preversion": "run-p build test",
+    "build": "rm -rf lib && tsc -p tsconfig.build.json",
+    "format": "prettier --write --ignore-path .gitignore '**/*.{ts,json,md,yml}'",
+    "format:check": "prettier --check --ignore-path .gitignore '**/*.{ts,json,md,yml}'",
+    "lint": "eslint --ignore-path .gitignore '**/*.ts'",
+    "preversion": "run-p lint build test",
     "release": "np",
     "test": "jest test"
   },

@@ -1,6 +1,6 @@
 # option.ts
 
-[![Build Status](https://github.com/kevinpollet/option.ts/workflows/Build/badge.svg)](https://github.com/kevinpollet/option.ts/actions)
+[![Build Status](https://github.com/kevinpollet/option.ts/workflows/build/badge.svg)](https://github.com/kevinpollet/option.ts/actions)
 ![TypeScript Version](https://img.shields.io/badge/TypeScript-3.x-blue.svg)
 [![License](https://img.shields.io/badge/license-MIT-blue.svg)](./LICENSE.md)
 

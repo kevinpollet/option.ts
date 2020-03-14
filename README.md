@@ -1,10 +1,18 @@
-# option.ts
+# option.ts <!-- omit in toc -->
 
 [![Build Status](https://github.com/kevinpollet/option.ts/workflows/build/badge.svg)](https://github.com/kevinpollet/option.ts/actions)
 ![TypeScript Version](https://img.shields.io/badge/TypeScript-3.x-blue.svg)
 [![License](https://img.shields.io/badge/license-MIT-blue.svg)](./LICENSE.md)
 
-Option monad for TypeScript
+Option monad for TypeScript.
+
+## Table of Contents <!-- omit in toc -->
+
+- [Install](#install)
+- [Usage](#usage)
+- [Type safety](#type-safety)
+- [Contributing](#contributing)
+- [License](#license)
 
 ## Install
 
@@ -24,7 +32,7 @@ const name: string = from(user)
   .getOrElse("No Name");
 ```
 
-💡 As you've already noticed `Option` monad does not play well with `Promise` from `ES6`. If you look at the following coding you will see that you need to write a lot of boilerplate code.
+💡 You may have noticed that `Option` monad does not play well with ES6 `Promise`. The following example shows that you need to write a lot of boilerplate code.
 
 ```ts
 import { from } from "@kevinpollet/option.ts";
@@ -36,7 +44,7 @@ const name: Promise<Option<string>> = from(user).then(promiseValue =>
 );
 ```
 
-To reduce this boilerplate code `option.ts` supports asynchronous option:
+To reduce this boilerplate `option.ts` adds support for asynchronous `Option`:
 
 ```ts
 import { fromPromise } from "@kevinpollet/option.ts";

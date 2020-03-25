@@ -17,7 +17,7 @@ Option monad for TypeScript.
 ## Install
 
 ```shell
-$ npm install --save @kevinpollet/option.ts
+npm install --save @kevinpollet/option.ts
 ```
 
 ## Usage
